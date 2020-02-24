@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Validation from './Validation/Validation';
 
  class App extends Component {
   state = {
@@ -26,10 +27,13 @@ import './App.css';
          <p>Hint: Keep in mind that Javascript strings are basically array!</p>
      
          <input type="text" 
-         onChange={this.inputChangedHandler}
-         value={this.state.userInput} />
+           onChange={this.inputChangedHandler}
+           value={this.state.userInput} 
+         />
          {/* /* Poder ver lo que ingresa en el input abajo. */ }
-        <p>{this.state.userInput}</p> 
+         <p>{this.state.userInput}</p> 
+          {/* Validar la longitud del texto con el length */}
+         < Validation inputLength= {this.state.userInput.length}/>
        </div>
        
       );
