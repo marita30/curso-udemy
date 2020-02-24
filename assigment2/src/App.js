@@ -25,7 +25,9 @@ import './App.css';
          </ol>
          <p>Hint: Keep in mind that Javascript strings are basically array!</p>
          <hr />
-         <input type= "text" onChange={this.inputChangedHandler} />
+         <input type= "text" 
+         onChange={this.inputChangedHandler}
+         value={this.state.userInput} />
        </div>
        
       );
