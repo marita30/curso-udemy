@@ -30,8 +30,9 @@ import Validation from './Validation/Validation';
            onChange={this.inputChangedHandler}
            value={this.state.userInput} 
          />
-         {/* /* Poder ver lo que ingresa en el input abajo. */ }
+          {/* /* Poder ver lo que ingresa en el input abajo. */ }
          <p>{this.state.userInput}</p> 
+
           {/* Validar la longitud del texto con el length */}
          < Validation inputLength= {this.state.userInput.length}/>
        </div>
