@@ -9,7 +9,7 @@ const validation = (props) => {
 
     return(
         <div>
-            {/* Ternario, si el metodo que esta en App.js inputLength es mayor que si poner el primer parrafo de lo contrario el otro. */}
+            {/* Ternario, si el metodo que esta en App.js inputLength es mayor que si poner el primer parrafo de lo contrario el otro.  Tarea N03*/}
             
             {
                

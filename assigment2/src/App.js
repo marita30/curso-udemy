@@ -33,7 +33,7 @@ import Validation from './Validation/Validation';
           {/* /* Poder ver lo que ingresa en el input abajo. */ }
          <p>{this.state.userInput}</p> 
 
-          {/* Validar la longitud del texto con el length */}
+          {/* Validar la longitud del texto con el length. Tarea N0 3*/}
          < Validation inputLength= {this.state.userInput.length}/>
        </div>
        
