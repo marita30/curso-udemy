@@ -12,9 +12,14 @@ import Char from './Char/Char';
   inputChangedHandler = (event) => {
     this.setState({userInput: event.target.value});
   }
+   /* Eliminar el index del char */
+  deleteCharHandler = (index) => {
+
+  }
+
 
    render() {
-
+      /* Estilo  */
      const charList = this.state.userInput.split('').map((char, index) => {
        return <Char character={char} key= {index} />
      });
