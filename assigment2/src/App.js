@@ -15,8 +15,8 @@ import Char from './Char/Char';
 
    render() {
 
-     const charList = this.state.userInput.split('').map(char => {
-       return <Char character={char} />
+     const charList = this.state.userInput.split('').map((char, index) => {
+       return <Char character={char} key= {index} />
      });
 
       return (
