@@ -8,10 +8,15 @@ import Char from './Char/Char';
     /* Declaras una variable llamada userInput */
     userInput: ''
   }
+
+
    /* Cambia el valor de la variable userInput */
   inputChangedHandler = (event) => {
     this.setState({userInput: event.target.value});
   }
+
+
+
    /* Eliminar el index del char */
   deleteCharHandler = (index) => {
     const text = this.state.userInput.split('');
@@ -19,8 +24,7 @@ import Char from './Char/Char';
     text.splice(index,1);
     /* Actualizar el Texto. */
     const updatedText = text.join('');
-    this.setState({userInput: updatedText});
-
+    this.setState({userInput: updatedText})
 
   }
 
