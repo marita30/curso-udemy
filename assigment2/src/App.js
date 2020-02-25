@@ -21,7 +21,12 @@ import Char from './Char/Char';
    render() {
       /* Estilo  */
      const charList = this.state.userInput.split('').map((char, index) => {
-       return <Char character={char} key= {index} />
+       return <Char 
+          character={char} 
+          key= {index}
+         /*  Pasar po el cuadro y darle clik para eliminarlo. */
+          clicked={() => this.deleteCharHandler(index)}
+       />;
      });
 
       return (
