@@ -14,6 +14,13 @@ import Char from './Char/Char';
   }
    /* Eliminar el index del char */
   deleteCharHandler = (index) => {
+    const text = this.state.userInput.split('');
+    /* Eliminar uno. */
+    text.splice(index,1);
+    /* Actualizar el Texto. */
+    const updatedText = text.join('');
+    this.setState({userInput: updatedText});
+
 
   }
 
