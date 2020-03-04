@@ -1,4 +1,4 @@
-import React, { Component}  from 'react';
+import React, { Component }  from 'react';
 import classes from './BurgerIngredient.css'
 import PropTypes from 'prop-types';
 
@@ -53,10 +53,10 @@ class BurgerIngredient extends Component {
 
 
 /* Agregando Papel de utileria(Validacion) */
-BurgerIngredient= {
+BurgerIngredient.propTypes= {
   /*   Es requerido osea si alguna vez intentamos usar el componente de ingrediente sin pasar un tipo, obtendremos un error */
     type: PropTypes.string.isRequired
-};
+}
 
 
 
