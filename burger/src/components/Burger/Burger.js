@@ -4,6 +4,7 @@ import BurgerIngredient from "./BurgerIngredient/BurgerIngredient";
 
 const burger = (props) => {
     return(
+       /*  Agregando los ingredientes del archivo BurgerIngredient pero no dinamicamente. */
         <div className={classes.Burger}>
             <BurgerIngredient type= "bread-top"/>
             <BurgerIngredient type= "cheese"/>
