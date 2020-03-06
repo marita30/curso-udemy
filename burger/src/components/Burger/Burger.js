@@ -22,7 +22,10 @@ const burger = (props) => {
     .reduce((arr, el) => {
         return arr.concat(el)
     }, []);/*  arreglo vacio */
+
+    
     /* Agregando un if para vaidar que si esta en cero ingredientes que muestre un msj diciendo Please star adding ingredients. */
+
     if (transformedIngredients.length === 0){
 
         transformedIngredients = <p>Please Start Adding Ingredients :)</p>;
