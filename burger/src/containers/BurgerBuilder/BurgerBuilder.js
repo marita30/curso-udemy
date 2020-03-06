@@ -11,12 +11,13 @@ class BurgerBuilder extends Component {
         this.state = {...}
     } */
 
+    /* Objeto */
     state = {
         ingredients: {
-            salad: 1,
-            bacon: 2,
-            cheese: 2,
-            meat: 2
+            salad: 0,
+            bacon: 0,
+            cheese: 0,
+            meat: 0
         }
 
     }
