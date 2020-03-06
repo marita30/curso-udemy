@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './BuildControl.css'
-import buildControls from '../BuildControls';
 
 const buildControl = (props) => (
     <div className = {classes.BuildControl}>
@@ -11,4 +10,4 @@ const buildControl = (props) => (
 
 );
 
-export default buildControls;
+export default buildControl;
