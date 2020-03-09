@@ -56,6 +56,22 @@ class BurgerBuilder extends Component {
    /*  Eiminar ingrediente */
     removeIngredientHandler = (type) => {
 
+        const oldCount = this.state.ingredients[type]; /* Primero calculamos el contador viejo. */
+        const updatedCount= oldCount - 1; /*  despues /* actualizamos el contador viejo por updateCounted. */ 
+        const updateIngredients = {
+            ...this.state.ingredients /* los puntos son para distribuir las propiedades del antiguo estado de ingredientes. */
+        };
+
+        updateIngredients[type] = updatedCount; /* ACtualizar los ingredientes */
+
+        const priceDeduction= INGREDIENT_PRICES[type]; /* Precio de la matriz INGREDIENT_PRICES */
+
+        const oldPrice = this.state.totalPrice; /* ver el valor viejo que es el precio base 4 del state */
+
+        const newPrice = oldPrice - priceDeduction; /* Calcular el precio nuevo  */
+
+        this.setState({totalPrice: newPrice, ingredients: updateIngredients});
+
     };
 
 
@@ -65,7 +81,9 @@ class BurgerBuilder extends Component {
             <Aux>
                 <Burger ingredients={this.state.ingredients}/>
                 <BuildControls
-                    ingredientAdded={this.addIngredientHandler} />
+                    ingredientAdded={this.addIngredientHandler} 
+                    ingredientRemoved={this.removeIngredientHandler}/>
+                   
             </Aux>
         );
     }
