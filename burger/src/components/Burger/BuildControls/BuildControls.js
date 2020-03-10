@@ -15,6 +15,7 @@ const controls = [
 
 const buildControls = (props) => (
     <div className = {classes.BuildControls}>
+        <p>Current Price: <strong>{props.price.toFixed(2)}</strong></p> {/* toFixed(2) es para decir que solo queremos dos decimales. */}
         {controls.map(ctrl =>(  /* Mapeamos la matriz llamada controls y luego ctrl que es el puntero del .map como el .each , luego a la etiqueta le asignamos el puntero ctrl.label que 
         label es un identificador unico. */
             <BuildControl 
