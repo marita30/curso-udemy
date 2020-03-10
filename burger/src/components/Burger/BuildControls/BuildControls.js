@@ -26,7 +26,9 @@ const buildControls = (props) => (
                 disabled={props.disabled[ctrl.type]} />/* viene del archivo BurgerBuilder.js */
         ))}
 
-        <button className = {classes.OrderButton}>ORDER NOW</button>
+        <button 
+        className = {classes.OrderButton}
+        disabled= {!props.purchasable}>ORDER NOW</button>
 
 
 
