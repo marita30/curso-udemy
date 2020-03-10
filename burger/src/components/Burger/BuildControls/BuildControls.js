@@ -21,7 +21,8 @@ const buildControls = (props) => (
             key ={ctrl.label} 
             label={ctrl.label} 
             added={ () => props.ingredientAdded(ctrl.type)} /* viene del archivo BurgerBuilder.js */
-            removed= { () => props.ingredientRemoved(ctrl.type)} />  /* viene del archivo BurgerBuilder.js */
+            removed= { () => props.ingredientRemoved(ctrl.type)}   /* viene del archivo BurgerBuilder.js */
+            disabled={props.disabled[ctrl.type]} />/* viene del archivo BurgerBuilder.js */
             ))}
             
 
