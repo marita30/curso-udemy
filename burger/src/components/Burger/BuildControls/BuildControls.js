@@ -19,12 +19,18 @@ const buildControls = (props) => (
         {controls.map(ctrl =>(  /* Mapeamos la matriz llamada controls y luego ctrl que es el puntero del .map como el .each , luego a la etiqueta le asignamos el puntero ctrl.label que 
         label es un identificador unico. */
             <BuildControl 
-            key ={ctrl.label} 
-            label={ctrl.label} 
-            added={ () => props.ingredientAdded(ctrl.type)} /* viene del archivo BurgerBuilder.js */
-            removed= { () => props.ingredientRemoved(ctrl.type)}   /* viene del archivo BurgerBuilder.js */
-            disabled={props.disabled[ctrl.type]} />/* viene del archivo BurgerBuilder.js */
-            ))}
+                key ={ctrl.label} 
+                label={ctrl.label} 
+                added={ () => props.ingredientAdded(ctrl.type)} /* viene del archivo BurgerBuilder.js */
+                removed= { () => props.ingredientRemoved(ctrl.type)}   /* viene del archivo BurgerBuilder.js */
+                disabled={props.disabled[ctrl.type]} />/* viene del archivo BurgerBuilder.js */
+        ))}
+
+        <button className = {classes.OrderButton}>ORDER NOW</button>
+
+
+
+        
             
 
         
