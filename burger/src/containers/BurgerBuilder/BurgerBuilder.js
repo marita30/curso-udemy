@@ -57,7 +57,11 @@ class BurgerBuilder extends Component {
     removeIngredientHandler = (type) => {
 
         const oldCount = this.state.ingredients[type]; /* Primero calculamos el contador viejo. */
+        if (oldCount <= 0 ){
+            return; 
+       }
         const updatedCount= oldCount - 1; /*  despues /* actualizamos el contador viejo por updateCounted. */ 
+
         const updateIngredients = {
             ...this.state.ingredients /* los puntos son para distribuir las propiedades del antiguo estado de ingredientes. */
         };
@@ -77,12 +81,23 @@ class BurgerBuilder extends Component {
 
     render(){
 
+        const disableInfo = {
+            ...this.state.ingredients
+        };
+        for (let Key in disableInfo){ /* Cmprobaremos si es cero o menos y se actualizara para seahabilitar el boton. */
+
+            disableInfo[Key] = disableInfo[Key] <= 0  /* Key es el puntero que contiene la informacion de los ingredientes de la hamburguesa. */
+        }
+            
+            
+
         return(
             <Aux>
                 <Burger ingredients={this.state.ingredients}/>
                 <BuildControls
                     ingredientAdded={this.addIngredientHandler} 
-                    ingredientRemoved={this.removeIngredientHandler}/>
+                    ingredientRemoved={this.removeIngredientHandler}
+                    disabled={disableInfo}/>
                    
             </Aux>
         );
