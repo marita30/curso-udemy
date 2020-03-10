@@ -30,7 +30,25 @@ class BurgerBuilder extends Component {
             meat: 0
         },
 
-        totalPrice: 4 /* precio base */
+        totalPrice: 4, /* precio base */
+        purchasable: false /* se convierte en verdad cuando podemos comprar una hamburguesa osea que la ahmburguesa tenga al menos un ingrediente. */
+    
+
+    }
+
+    /* Actualizar el estado del purchasable */
+    updatePurchasableState ( ingredients){
+       
+        const sum = Object.keys(ingredients) /* creamo una matriz del object */
+            .map(igKey => {
+                return ingredients[igKey]; /* igKey retorna la cantidad de ensalada , tocino o de cualquier ingrediente que este en la variale ingredients */
+
+        })
+        .reduce ((sum, el) => {
+            return sum + el;
+        }, 0);
+
+        this.setState({purchasable: sum > 0});
 
     }
 
@@ -51,6 +69,7 @@ class BurgerBuilder extends Component {
         const newPrice = oldPrice + priceAddition; /* Calcular el precio nuevo  */
 
         this.setState({totalPrice: newPrice, ingredients: updateIngredients}); /* Establecer un estado , osea establecer el precio total para el nuevo precio de igual manera con os ingredientes.*/
+        this.updatePurchasableState(updateIngredients); /* Para el botton ordernow */
     };
 
    /*  Eiminar ingrediente */
@@ -76,6 +95,8 @@ class BurgerBuilder extends Component {
 
         this.setState({totalPrice: newPrice, ingredients: updateIngredients});
 
+        this.updatePurchasableState(updateIngredients); /* Para el botton ordernow */
+
     };
 
 
@@ -98,6 +119,7 @@ class BurgerBuilder extends Component {
                     ingredientAdded={this.addIngredientHandler} 
                     ingredientRemoved={this.removeIngredientHandler}
                     disabled={disableInfo}
+                    purchasable = {this.state.purchasable}
                     price={this.state.totalPrice}/>
                    
             </Aux>
