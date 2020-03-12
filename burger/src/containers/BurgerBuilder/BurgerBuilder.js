@@ -137,7 +137,7 @@ class BurgerBuilder extends Component {
                 <Burger ingredients={this.state.ingredients}/>
                 <BuildControls
                     ingredientAdded={this.addIngredientHandler} 
-                    ingredientRemoved={this.removeIngredientHandler}
+                    ingredientRemoved={this.removeIngredientHalendler}
                     disabled={disableInfo}
                     purchasable = {this.state.purchasable}
                     ordered={this.purchaseHnadler} /* viene del archivo js */
