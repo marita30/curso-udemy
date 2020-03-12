@@ -108,7 +108,13 @@ class BurgerBuilder extends Component {
 
         this.setState({purchasing: true}); /* establecer el estado del purchasing a true */
 
-    };
+    }
+
+    /* Para cerrar el telon de fondo */
+    purchaseCancelHandler= () => {
+        this.setState({purchasing: false}); /* establecer el estado del purchasing a false */
+
+    }
 
 
     render(){
@@ -125,7 +131,7 @@ class BurgerBuilder extends Component {
 
         return(
             <Aux>
-                <Modal show={this.state.purchasing}>
+                <Modal show={this.state.purchasing}  modalClosed ={this.purchaseCancelHandler}>
                     < OrderSummary  ingredients={this.state.ingredients}/> {/* viene del archivo orderSummary.js */}
                 </Modal>
                 <Burger ingredients={this.state.ingredients}/>
