@@ -5,7 +5,7 @@ import classes from './Backdrop.css';
 
 const backdrop = (props) => (
 
-    props.show ? <div className={classes.Backdrop} onClick={props.clicked}> 
+    props.show ? <div className={classes.Backdrop} onClick={props.clicked}>  {/* archivo modals.js */}
 
     </div> : null /* Verificr si es verdadero o falso */
 );
