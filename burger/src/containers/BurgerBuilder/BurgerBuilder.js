@@ -33,7 +33,8 @@ class BurgerBuilder extends Component {
         },
 
         totalPrice: 4, /* precio base */
-        purchasable: false /* se convierte en verdad cuando podemos comprar una hamburguesa osea que la ahmburguesa tenga al menos un ingrediente. */
+        purchasable: false ,/* se convierte en verdad cuando podemos comprar una hamburguesa osea que la ahmburguesa tenga al menos un ingrediente. */
+        purchasing: false /* para saber si se hizo click en el boton OrderNow */
     
 
     }
@@ -95,9 +96,17 @@ class BurgerBuilder extends Component {
 
         const newPrice = oldPrice - priceDeduction; /* Calcular el precio nuevo  */
 
-        this.setState({totalPrice: newPrice, ingredients: updateIngredients});
+        this.setState({totalPrice: newPrice, ingredients: updateIngredients}); /* establecer el estado de totalPrice y de ingredients */
 
         this.updatePurchasableState(updateIngredients); /* Para el botton ordernow */
+
+    };
+
+
+     /* se activara siempre que nosotros hagamos click en el boton Order Now. */
+    purchaseHnadler = () => {
+
+        this.setState({purchasing: true}); /* establecer el estado del purchasing a true */
 
     };
 
@@ -116,7 +125,7 @@ class BurgerBuilder extends Component {
 
         return(
             <Aux>
-                <Modal>
+                <Modal show={this.state.purchasing}>
                     < OrderSummary  ingredients={this.state.ingredients}/> {/* viene del archivo orderSummary.js */}
                 </Modal>
                 <Burger ingredients={this.state.ingredients}/>
@@ -125,6 +134,7 @@ class BurgerBuilder extends Component {
                     ingredientRemoved={this.removeIngredientHandler}
                     disabled={disableInfo}
                     purchasable = {this.state.purchasable}
+                    ordered={this.purchaseHnadler} /* viene del archivo js */
                     price={this.state.totalPrice}/>
                    
             </Aux>
