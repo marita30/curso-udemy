@@ -1,5 +1,8 @@
 import React from 'react';
 import classes from './Backdrop.css';
+import { findNodeModule } from 'jest-resolve';
+
+/* Para el telon de findNodeModule. */
 
 const backdrop = (props) => (
 
