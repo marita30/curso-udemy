@@ -38,7 +38,7 @@ class BurgerBuilder extends Component {
 
     }
 
-    /* Actualizar el estado del purchasable */
+    /* Actualizar el estado del purchasable , boton OrderNow */
     updatePurchasableState ( ingredients){
        
         const sum = Object.keys(ingredients) /* creamo una matriz del object */
