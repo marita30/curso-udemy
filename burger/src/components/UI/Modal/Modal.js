@@ -5,7 +5,7 @@ import Backdrop from './Backdrop/Backdrop';
 
 const modal = (props) => (
     <Aux>
-        <Backdrop show={props.show}/> {/* para agregar el telon de fondo */}
+        <Backdrop show={props.show} clicked={props.modalClosed}/> {/* para agregar el telon de fondo */} {/* clicked viene del archivo modal.js */}
         <div className={classes.Modal}
             style={{
                 
