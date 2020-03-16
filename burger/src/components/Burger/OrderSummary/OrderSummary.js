@@ -1,5 +1,6 @@
 import React from 'react';
 import Aux from '../../../hoc/Aux';
+import Button from '../../UI/Button/Button'
 
 const orderSummary = (props) => {
 
@@ -18,10 +19,10 @@ const orderSummary = (props) => {
                 {ingredientSummary}
             </ul>
             <p>Continue to Checkout?</p>
-            <button>CANCEL</button>
-            <button>CONTINUE</button>
+            <Button btnType="Danger" clicked={props.purchaseCancelled}> CANCEL</Button> {/* btnType viene del archivo Button.js  y Clicked del archivo BurgerBuilder.js*/} 
+            <Button btnType="Success" clicked={props.purchaseContinued}>CONTINUE</Button>
         </Aux>
     )    
 };
 
-export default orderSummary;
+export default orderSummary;         
