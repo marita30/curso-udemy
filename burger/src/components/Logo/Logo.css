@@ -2,6 +2,8 @@
     background-color: white;
     padding: 8px;
     height: 80%;
+    box-sizing: border-box; /* Para darle forma de una cajita peque;a al logo */
+    border-radius: 5px; /* Para bordear las puntas del cuadro */
 }
 
 .Logo img {
