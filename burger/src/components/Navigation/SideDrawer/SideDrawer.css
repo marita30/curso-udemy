@@ -33,4 +33,6 @@
 
 .Logo{
     height: 11%;
+    /* Para el responsive del celular. Darle un espacio a los botones de la imges hamburguesa. */
+    margin-bottom: 32px;
 }

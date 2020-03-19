@@ -22,3 +22,10 @@
     height: 80%;
     
 }
+
+/* Consulta para el responsive del celular  para que el logo de la hamburguesa se mire en una de las esquinas solo en disositivo chiquitos.*/
+@media (max-width: 499px) {
+    .DesktopOnly{
+        display: none;
+    }
+}

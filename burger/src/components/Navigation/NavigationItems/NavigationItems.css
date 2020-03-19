@@ -4,8 +4,16 @@
     padding: 0;
     list-style: none;
     display: flex;
+    flex-flow: column;
     align-items: center;
     height: 100%;
     
 
+}
+
+/* Agregamos tambien aqui como en el archivo NavigationItem.css una consulta para el responsive. de navegacion del celular*/
+@media(min-width: 500px){
+    .NavigationItems{
+        flex-flow: row; 
+    }
 }
