@@ -8,8 +8,8 @@ import Aux from '../../../hoc/Aux';
 const sideDrawer = (props) => {
     return(
         < Aux >
-            <Backdrop show/> {/* viene del archivo Backdrop.js y el show es de la condicion que si props.show es verdadero que se active una clase si no que retorne null es para el telon.*/}
-            <div className={classes.SideDrawer}> 
+            <Backdrop show={props.open} clicked={props.closed}/> {/* /* viene del archivo Backdrop.js y el show es de la condicion que si props.show es verdadero que se active una clase si no que retorne null es para el telon.*/}
+            <div className={classes.SideDrawer}>  {/* /* closed viene del archivo Layout.js del metodo  sideDrawerClosedHandler. de igual forma props.open */}
 
                 <div className={classes.Logo}>
 
