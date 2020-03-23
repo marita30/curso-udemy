@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Aux from '../../hoc/Aux';
+import Aux from '../Aux/Aux';
 import classes from './Layout.css';
-import Toolbar from '../Navigation/Toolbar/Toolbar'
-import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
+import Toolbar from '../../components/Navigation/Toolbar/Toolbar'
+import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 
 /* vamos a convertir Layout en class donde podemos implementar el metodo para que podamos escuc har ambas Partes
 o cerrar haciendo click en el fondo (telon) , elegimos aqui porque tiene a los dos el Toolbar y SideDrawer*/
