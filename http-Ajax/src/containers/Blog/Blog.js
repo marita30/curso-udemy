@@ -9,7 +9,8 @@ import './Blog.css';
 class Blog extends Component {
 
     state = {
-        posts: []
+        posts: [],
+        selectedPostId: null
 
     }
 
@@ -27,20 +28,35 @@ class Blog extends Component {
                 });
                 this.setState({posts: updatePosts}); /* declaramos un estado para la variable posts del state y le pasamos lo que tiene la variable updatePosts. */
                 //console.log(response);
-            }); /* esto es igual a decir const respose = axios.get('http://jsonplaceholder.typicode.com/posts') y luego console.log(response) y luego vas a verificar a la console la informacion que trae de la api. */
+        }); /* esto es igual a decir const respose = axios.get('http://jsonplaceholder.typicode.com/posts') y luego console.log(response) y luego vas a verificar a la console la informacion que trae de la api. */
 
     }
+
+    /* Para hacer click a cada una de los posts individuales. */
+
+    postSelectedHandler = (id) => {
+        this.setState({selectedPostId: id}); /* selectedPostId recibe como parametro el id */
+
+
+    }
+
+
     render () { 
         const posts = this.state.posts.map( post => { 
-            return <Post  key= {post.id}  title = {post.title} author= {post.author}/>;  
-        });
+            return <Post  
+                key= {post.id}  
+                clicked = {() => this.postSelectedHandler(post.id)}
+                title = {post.title} 
+                author= {post.author}
+           />;  
+        } );
         return (
             <div>
                 <section className="Posts">
                     {posts} {/* viene del const posts. */}
                 </section>
                 <section>
-                    <FullPost />
+                    <FullPost  id={this.state.selectedPostId}/>
                 </section>
                 <section>
                     <NewPost />
