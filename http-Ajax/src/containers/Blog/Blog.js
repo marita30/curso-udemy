@@ -18,14 +18,21 @@ class Blog extends Component {
 
         axios.get('http://jsonplaceholder.typicode.com/posts')
             .then(response => {
-                this.setState({posts: response.data}); /* delcaramos un estado que le decimos que la variable declarada en el state que se llama posts: contenga la informacion de data que seria el arreglo con los hashes que nos da la url de axios.get */
+                const posts  = response.data.slice(0, 4); /* le decimos que queremos que solo nos muestre desde el 0 al 4 elementos  y lo guardamos en una nueva variable llamada posts*/
+                const updatePosts = posts.map(post => { /*  luego mandamos a actualizar la nuava variable llamada posts lo mapeamos y luego en el return mandamos a reestructurar la informacion agregandole un author. */
+                    return{
+                        ...post,
+                        author: "MJ <3"
+                    }
+                });
+                this.setState({posts: updatePosts}); /* declaramos un estado para la variable posts del state y le pasamos lo que tiene la variable updatePosts. */
                 //console.log(response);
             }); /* esto es igual a decir const respose = axios.get('http://jsonplaceholder.typicode.com/posts') y luego console.log(response) y luego vas a verificar a la console la informacion que trae de la api. */
 
     }
     render () { 
         const posts = this.state.posts.map( post => { 
-            return <Post  key= {post.id}  title = {post.title}/>     
+            return <Post  key= {post.id}  title = {post.title} author= {post.author}/>;  
         });
         return (
             <div>
