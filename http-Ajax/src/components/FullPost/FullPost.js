@@ -14,7 +14,7 @@ class FullPost extends Component {
     componentDidUpdate () {
         if (this.props.id){ //le decimos que queremos que el id sea verdaero.)
             if (!this.state.loadedPosts || (this.state.loadedPosts && this.state.loadedPosts.id !== this.props.id)){ //Verificamos si loadedPosts es true luego le decimos && loadedPosts.id es igual al props.id qe imprima el bloque.
-                axios.get('https://jsonplaceholder.typicode.com/posts/' + this.props.id) /* GET /posts/1 */ /* hacemos peticion a la api */
+                axios.get('/posts/' + this.props.id) /* GET /posts/1 */ /* hacemos peticion a la api */
                 .then(response =>  {
                     console.log(response)
                     /* console.log(response); */ /* Para ver la data en la console. */
@@ -28,7 +28,7 @@ class FullPost extends Component {
     //ELiminar un posts.
     deletePostHandler = () => {
 
-        axios.delete('https://jsonplaceholder.typicode.com/posts/' + this.props.id)
+        axios.delete('/posts/' + this.props.id)
         .then(response => {
             console.log(response);
         });

@@ -16,7 +16,7 @@ class NewPost extends Component {
             body: this.state.content,
             author: this.state.author
         } // esto es para decir que queremos que nos imprima estos valores. y luego se lo pasamos la const como parametro a la url que hacemos la peticion a la api.
-        axios.post('https://jsonplaceholder.typicode.com/posts', data)
+        axios.post('/posts', data)
         .then(response => {
             console.log(response);
         }); //POST
