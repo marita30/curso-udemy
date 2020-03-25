@@ -17,7 +17,7 @@ class Blog extends Component {
   /*   Le decimos al que una vez que se carge este contenedor muestre la informacion en la direccion que le declaramos axios.get */
     componentDidMount (){
 
-        axios.get('http://jsonplaceholder.typicode.com/posts')
+        axios.get('https://jsonplaceholder.typicode.com/posts') // GET
             .then(response => {
                 const posts  = response.data.slice(0, 4); /* le decimos que queremos que solo nos muestre desde el 0 al 4 elementos  y lo guardamos en una nueva variable llamada posts*/
                 const updatePosts = posts.map(post => { /*  luego mandamos a actualizar la nuava variable llamada posts lo mapeamos y luego en el return mandamos a reestructurar la informacion agregandole un author. */
