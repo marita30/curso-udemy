@@ -28,8 +28,10 @@ class Blog extends Component {
                 });
                 this.setState({posts: updatePosts}); /* declaramos un estado para la variable posts del state y le pasamos lo que tiene la variable updatePosts. */
                 //console.log(response);
-        }); /* esto es igual a decir const respose = axios.get('http://jsonplaceholder.typicode.com/posts') y luego console.log(response) y luego vas a verificar a la console la informacion que trae de la api. */
-
+        })/* esto es igual a decir const respose = axios.get('http://jsonplaceholder.typicode.com/posts') y luego console.log(response) y luego vas a verificar a la console la informacion que trae de la api. */
+        .catch (error => {
+            console.log(error);
+        });
     }
 
     /* Para hacer click a cada una de los posts individuales. */
