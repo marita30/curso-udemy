@@ -12,3 +12,7 @@ El usuario puede crear su propia hamburguesa dinamicamete.
 4. url para hacer las peticiones https://burger-1e5b1.firebaseio.com/
 
  ![stack Overflow](https://github.com/marita30/Curso-Udemy/blob/master/burger/src/assets/images/firebase.png)
+
+## firebase//peticiones ⚙️
+1. en el archivo BurgerBuilder.js tenemos una peticion post para agregar a la base de datos de firebase las ordenes
+axios.post('/orders.json', order).
