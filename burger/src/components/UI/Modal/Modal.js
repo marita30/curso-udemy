@@ -11,7 +11,7 @@ class Modal extends Component {
         } /* esto quiere decir que si nextProps.show si eso es igual a this.props.show entonces para el estado anterior quiero devolver true */
     
     /* Ahora creamos otro componente para confirmar si funciona */ /* Esto es para que se actualice solo cuando le demos al boton OrderNow  */
-    componentWillUpdate () {
+    UNSAFE_componentWillUpdate () {
         console.log('[Modal] WillUpdate');
     }
 

@@ -4,7 +4,7 @@ import Button from '../../UI/Button/Button'
 
 class OrderSummary extends Component {
     /* Metodo para ver cuando esto realmente se actualiza */
-    componentWillUpdate(){
+    UNSAFE_componentWillUpdate(){
         /* se va actualizar cada que le damos click a cualquier boton que tenga la aplicacion. */
         console.log('[OrderSummary] WillUpdate');
     }
