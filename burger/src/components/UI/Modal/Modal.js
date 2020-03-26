@@ -6,8 +6,8 @@ import Backdrop from '../Backdrop/Backdrop';
 class Modal extends Component {
 
     /* Creamos un componente de que solo se actualice si se muestran cambios. */
-    shouldComponentUpdate(nextProps, nextState){
-            return nextProps.show !== this.props.show;
+    shouldComponentUpdate(nextProps, nextState){        //spinner 
+            return nextProps.show !== this.props.show || nextProps.children !== this.props.children;
         } /* esto quiere decir que si nextProps.show si eso es igual a this.props.show entonces para el estado anterior quiero devolver true */
     
     /* Ahora creamos otro componente para confirmar si funciona */ /* Esto es para que se actualice solo cuando le demos al boton OrderNow  */
