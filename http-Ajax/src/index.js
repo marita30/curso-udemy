@@ -7,9 +7,10 @@ import axios from 'axios';
 
 
 //Global configuration.
-axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com' //Guardamos la url base para que axios.get('/posts') del archivo blog.js, newpost.js y fullpost.js lo lea.
-axios.dafaults.headers.common['Authorization'] = 'AUTH TOKEN'; //PARA EL TOKEN si tenemos.
-axios.dafaults.headers.post['Content-Type'] = 'application/json';
+
+axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com'; //Guardamos la url base para que axios.get('/posts') del archivo blog.js, newpost.js y fullpost.js lo lea.
+axios.defaults.headers.common['Authorization'] = 'AUTH TOKEN'; //PARA EL TOKEN si tenemos.
+axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 axios.interceptors.request.use(request => {
     console.log(request);
