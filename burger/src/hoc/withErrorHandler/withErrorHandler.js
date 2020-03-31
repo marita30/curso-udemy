@@ -11,7 +11,7 @@ const withErrorHandler = (WrappedComponent, axios) => {                 //que re
         }
 
         // gancho de ciclo de vida.
-        componentDidMount () {
+        UNSAFE_componentWillMount () {
             axios.interceptors.request.use(req => {
                 this.setState({error: null});
                 return req;
@@ -35,7 +35,7 @@ const withErrorHandler = (WrappedComponent, axios) => {                 //que re
                     <Modal 
                         show={this.state.error}
                         modalClosed={this.errorConfirmedHandler}>  
-                        {this.state.error ? this.state.error.message : null} // si this.state.error es nulo, entonces generare el message de lo contrario generare nulo.
+                        {this.state.error ? this.state.error.message : null} {/* si this.state.error es nulo, entonces generare el message de lo contrario generare nulo. */}
                     </Modal>
                     < WrappedComponent {...this.props} />                {/* distribuir cualquier accesorios que WrapedComponent pueda recibir */}
                   
