@@ -29,19 +29,24 @@ class BurgerBuilder extends Component {
 
     /* Objeto */
     state = {
-        ingredients: {
-            salad: 0,
-            bacon: 0,
-            cheese: 0,
-            meat: 0
-        },
-
+        ingredients: null,
         totalPrice: 4, /* precio base */
         purchasable: false ,/* se convierte en verdad cuando podemos comprar una hamburguesa osea que la ahmburguesa tenga al menos un ingrediente. */
         purchasing: false ,/* para saber si se hizo click en el boton OrderNow */
-        loading: false //spinner
+        loading: false,//spinner
+        error: false //error.
     
 
+    }
+    //obtener los ingredeintes desde el back end
+    componentDidMount () {
+        axios.get('https://burger-1e5b1.firebaseio.com/ingredients.json')
+        .then(response => {
+            this.setState({ingredients: response.data});
+        })
+        .catch(error => {
+            this.setState({error: true})
+        });
     }
 
     /* Actualizar el estado del purchasable , boton OrderNow */
@@ -164,35 +169,47 @@ class BurgerBuilder extends Component {
 
             disableInfo[Key] = disableInfo[Key] <= 0  /* Key es el puntero que contiene la informacion de los ingredientes de la hamburguesa. */
         }
+        //Para solucionar el error de la variable ingredients, que ahora esta como null en el state
+        let orderSummary = null;
+        //Para solucionar el error de la variable ingredients, que ahora esta como null en el state y que los ingredientes esten en firebase.
+        let burger = this.state.error ? <p>Ingredients can't be loaded!</p> : <Spinner />;
+        if(this.state.ingredients) { // si el state ingredients no son nulos que muestre el bloque del burger.
+            burger = (
+                <Aux>
+            
+                    <Burger ingredients={this.state.ingredients}/>
+                    <BuildControls
+                        ingredientAdded={this.addIngredientHandler} 
+                        ingredientRemoved={this.removeIngredientHandler}
+                        disabled={disableInfo}
+                        purchasable = {this.state.purchasable}
+                        ordered={this.purchaseHnadler} /* viene del archivo js */
+                        price={this.state.totalPrice}/>
+                </Aux>    
+            );
+           //Para solucionar el error de la variable ingredients, que ahora esta como null en el state y que lo ingredientes esten en frebase
+            orderSummary =   < OrderSummary  
+                ingredients={this.state.ingredients} /* viene del archivo orderSummary.js */
+                price={this.state.totalPrice}
+                purchaseCancelled = {this.purchaseCancelHandler}
+                purchaseContinued = {this.purchaseContinueHandler}
+            />; 
+        }
 
         //para el spinner
-        let orderSummary =   < OrderSummary  
-            ingredients={this.state.ingredients} /* viene del archivo orderSummary.js */
-            price={this.state.totalPrice}
-            purchaseCancelled = {this.purchaseCancelHandler}
-            purchaseContinued = {this.purchaseContinueHandler}/>; 
-
+        
         if(this.state.loading) {
             orderSummary = < Spinner />;
 
         }
-            
-            
-
+        
         return(
             <Aux>
                 <Modal show={this.state.purchasing}  modalClosed ={this.purchaseCancelHandler}>
-                  {orderSummary}
-                        
+                  {orderSummary}   
                 </Modal>
-                <Burger ingredients={this.state.ingredients}/>
-                <BuildControls
-                    ingredientAdded={this.addIngredientHandler} 
-                    ingredientRemoved={this.removeIngredientHandler}
-                    disabled={disableInfo}
-                    purchasable = {this.state.purchasable}
-                    ordered={this.purchaseHnadler} /* viene del archivo js */
-                    price={this.state.totalPrice}/>
+                {burger}
+               
                    
             </Aux>
         );
