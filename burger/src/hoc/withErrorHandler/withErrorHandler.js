@@ -12,17 +12,24 @@ const withErrorHandler = (WrappedComponent, axios) => {                 //que re
 
         // gancho de ciclo de vida.
         UNSAFE_componentWillMount () {
-            axios.interceptors.request.use(req => {
+            this.reqInteceptor = axios.interceptors.request.use(req => {
                 this.setState({error: null});
                 return req;
 
             }); //Interceptor para una solicitud... borrar cualquier error.
-            axios.interceptors.response.use(res => res, error => {
+            this.resInteceptor = axios.interceptors.response.use(res => res, error => {
                 this.setState({error: error}); // el primer error es de state y el egundo es del puntero.
 
             }); //Interceptor global para el error
 
         }
+        //Eliminar interceptors.
+        componentWillUnmount () {
+            axios.interceptors.request.eject(this.reqInteceptor);
+            axios.interceptors.response.eject(this.resInteceptor);
+
+        }
+
         // clicked.
         errorConfirmedHandler = () => {
 
