@@ -2,7 +2,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Comenzando 🚀
 ```
 * instalamos npm isntall axios --save.
+
 * Haremos las peticiones a la api de prueba http://jsonplaceholder.typicode.com
+
+* instalamos npm install --save react-router react-router-dom para la configuraciones de las rutas, trabajaremos con           multiples paginas.
 
 ```
 
