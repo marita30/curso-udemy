@@ -9,6 +9,10 @@ class NewPost extends Component {
         content: '',
         author: 'MJ'
     }
+     //Bloquear los accesorios.
+    componentDidMount () {
+        console.log(this.props);
+    }
     //Para el botton de add Post. Para poder agregar un nuevo post
     postDataHandler = () => {
         const data = {
