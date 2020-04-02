@@ -19,6 +19,8 @@
 }
 
 .Blog a:hover,
-.Blog a:active {
+.Blog a:active,
+/* Para que cuando este en la pagina NewPosts los botones queden estatico en color naranja. con el nuevo NavLink en Blog.js */
+.Blog a.active {
     color:#fa923f;
 }
