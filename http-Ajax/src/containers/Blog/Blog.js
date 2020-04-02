@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import './Blog.css';
 import Posts from './Posts/Posts';
+import NewPost from './NewPost/NewPost';
 
 class Blog extends Component {
     render () { 
@@ -20,6 +21,7 @@ class Blog extends Component {
                 </header>
                 {/* <Route  path="/" exact render={() => <h1>HOME</h1>}/> */} {/* exact es un props booleano, tan solo agregarlo asi lo establece como verdadero y predeterminado es falso. */}
                 <Route path="/" exact  component={Posts}/> {/* Ya no vamos a  usar render, ahora usaremos component que deberia representarse en el lugar de esta ruta. POr ejemplo aqui le decimos que muestre todos los Posts. */}
+                <Route path="/new-post" component={NewPost}/>
             </div>
         );
     }
