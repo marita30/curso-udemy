@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from '../../../axios';
 import Post from '../../../components/Post/Post';
 
-import classes from './Posts.css';
+/* import classes from './Posts.css'; */
 
 class Posts extends Component {
 
@@ -13,6 +13,9 @@ class Posts extends Component {
 
      /*   Le decimos al que una vez que se carge este contenedor muestre la informacion en la direccion que le declaramos axios.get */
      componentDidMount (){
+
+         //Bloquear los accesorios.
+         console.log(this.props);
 
         axios.get('/posts') // GET
             .then(response => {
