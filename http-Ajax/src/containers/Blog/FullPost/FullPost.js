@@ -11,10 +11,11 @@ class FullPost extends Component {
     }
 
     /* gancho de ciclo de vida  */
-    componentDidUpdate () {
-        if (this.props.id){ //le decimos que queremos que el id sea verdaero.)
+
+    componentDidMount() {
+        if (this.props.match.params.id){ //le decimos que queremos que el id sea verdaero.) tambien el match.params.id nos permit tener el id de la api para que traiga los post de ese id.
             if (!this.state.loadedPosts || (this.state.loadedPosts && this.state.loadedPosts.id !== this.props.id)){ //Verificamos si loadedPosts es true luego le decimos && loadedPosts.id es igual al props.id qe imprima el bloque.
-                axios.get('/posts/' + this.props.id) /* GET /posts/1 */ /* hacemos peticion a la api */
+                axios.get('/posts/' + this.props.match.params.id) /* GET /posts/1 */ /* hacemos peticion a la api */
                 .then(response =>  {
                     console.log(response)
                     /* console.log(response); */ /* Para ver la data en la console. */
