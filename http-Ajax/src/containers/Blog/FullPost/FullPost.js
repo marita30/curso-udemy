@@ -36,7 +36,7 @@ class FullPost extends Component {
             }
             
         }
-
+        
     }
 
     //ELiminar un posts.
