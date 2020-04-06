@@ -13,8 +13,20 @@ class FullPost extends Component {
     /* gancho de ciclo de vida  */
 
     componentDidMount() {
+        console.log(this.props);
+        this.loadData();
+        
+    }
+
+    componentDidUpdate () {
+
+        this.loadData();
+
+    }
+
+    loadData () {
         if (this.props.match.params.id){ //le decimos que queremos que el id sea verdaero.) tambien el match.params.id nos permit tener el id de la api para que traiga los post de ese id.
-            if (!this.state.loadedPosts || (this.state.loadedPosts && this.state.loadedPosts.id !== this.props.id)){ //Verificamos si loadedPosts es true luego le decimos && loadedPosts.id es igual al props.id qe imprima el bloque.
+            if (!this.state.loadedPosts || (this.state.loadedPosts && this.state.loadedPosts.id !== + this.props.match.params.id)){ //Verificamos si loadedPosts es true luego le decimos && loadedPosts.id es igual al props.id qe imprima el bloque.
                 axios.get('/posts/' + this.props.match.params.id) /* GET /posts/1 */ /* hacemos peticion a la api */
                 .then(response =>  {
                     console.log(response)
@@ -24,15 +36,16 @@ class FullPost extends Component {
             }
             
         }
+
     }
 
     //ELiminar un posts.
     deletePostHandler = () => {
 
-        axios.delete('/posts/' + this.props.id)
+        axios.delete('/posts/' + this.props.match.params.id)
         .then(response => {
             console.log(response);
-        });
+        }); 
 
     }
 
@@ -40,7 +53,7 @@ class FullPost extends Component {
 
         let post = <p style={{textAlign: 'center'}}>Please select a Post!</p>;
 
-        if (this.props.id){
+        if (this.props.match.params.id){
             post = <p style={{textAlign: 'center'}}>Loading...!</p>;
         }
 
