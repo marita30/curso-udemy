@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from '../../../axios';
 import Post from '../../../components/Post/Post';
 /* Para hacer una ruta con los :id */
-import  { Link } from 'react-router-dom';
+/* import  {  } from 'react-router-dom'; */
 
 import './Posts.css';
 
@@ -40,8 +40,10 @@ class Posts extends Component {
 
      /* Para hacer click a cada una de los posts individuales. */
     postSelectedHandler = (id) => {
+       /*  Navegar programaticamente. */
+       this.props.history.push({pathname: '/' + id});
 
-        this.setState({selectedPostId: id}); /* selectedPostId recibe como parametro el id */
+        /* this.setState({selectedPostId: id}); /* selectedPostId recibe como parametro el id */ 
 
     }
 
@@ -51,14 +53,15 @@ class Posts extends Component {
         if (!this.state.error){
             posts = this.state.posts.map (post => {
                 return (
-                    <Link to={'/' + post.id}    key= {post.id} > {/* Para la ruta que esta en Blog.js , para que muestre los posts con su id */}
+                   /*  <Link to={'/' + post.id}    key= {post.id} > {/* Para la ruta que esta en Blog.js , para que muestre los posts con su id */
                         <Post  
+                        key= {post.id}
                         title = {post.title} 
                         author= {post.author}
                         //Usar los accesorios(props)
                         /* {...this.props.} */
                         clicked = {() => this.postSelectedHandler(post.id)}/>
-                    </Link> 
+                   /*  </Link>  */
                 );
 
             })
