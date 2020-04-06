@@ -51,7 +51,7 @@ class Posts extends Component {
         if (!this.state.error){
             posts = this.state.posts.map (post => {
                 return (
-                    <Link to={'/' + post.id}    key= {post.id} > {/* Para la ruta que esta en Blog.js , para que muestre los posts con su id */}
+                    <Link to={'/posts/' + post.id}    key= {post.id} > {/* Para la ruta que esta en Blog.js , para que muestre los posts con su id */}
                         <Post  
                         title = {post.title} 
                         author= {post.author}
