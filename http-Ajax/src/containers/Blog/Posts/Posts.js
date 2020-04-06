@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from '../../../axios';
 import Post from '../../../components/Post/Post';
+import { Route } from 'react-router-dom';
+import FullPost from '../FullPost/FullPost';
 /* Para hacer una ruta con los :id */
 /* import  {  } from 'react-router-dom'; */
 
@@ -41,7 +43,7 @@ class Posts extends Component {
      /* Para hacer click a cada una de los posts individuales. */
     postSelectedHandler = (id) => {
        /*  Navegar programaticamente. */
-       this.props.history.push({pathname: '/' + id});
+       this.props.history.push({pathname: '/posts/' + id});
 
         /* this.setState({selectedPostId: id}); /* selectedPostId recibe como parametro el id */ 
 
@@ -53,7 +55,7 @@ class Posts extends Component {
         if (!this.state.error){
             posts = this.state.posts.map (post => {
                 return (
-                   /*  <Link to={'/' + post.id}    key= {post.id} > {/* Para la ruta que esta en Blog.js , para que muestre los posts con su id */
+                   /*  <Link to={'/posts/' + post.id}    key= {post.id} > {/* Para la ruta que esta en Blog.js , para que muestre los posts con su id */
                         <Post  
                         key= {post.id}
                         title = {post.title} 
@@ -68,9 +70,13 @@ class Posts extends Component {
         } 
               
         return(
-            <section className="Posts">
-                {posts} {/* viene del const posts. */}
-            </section>
+            /* cargar un host especifico  */
+            <div>
+                <section className="Posts">
+                    {posts} {/* viene del const posts. */}
+                </section>
+                  <Route path={this.props.match.url + '/:id'} exact component={FullPost}/> 
+            </div>
 
         );
     }
