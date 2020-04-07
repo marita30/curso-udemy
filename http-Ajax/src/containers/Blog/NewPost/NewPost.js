@@ -32,7 +32,7 @@ class NewPost extends Component {
 
     render () {
 
-        /* Conditional redirect. Cuando haces un nuevo post te redirecciona a la ruta /posts  */
+        /* Conditional redirect. Cuando haces un nuevo post te redirecciona a la ruta /posts */
         let redirect = null;
         if (this.state.submitted) {
             redirect = <Redirect to="/posts" />
