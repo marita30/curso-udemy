@@ -1,12 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/burger/node_modules
-/.pnp
-.pnp.js
-/http-Ajax/node_modules
-/assigment2/node_modules
-/routing--react-suspense-start/node_modules
+/node_modules
+
 # testing
 /coverage
 
