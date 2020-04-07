@@ -25,7 +25,8 @@ class NewPost extends Component {
         axios.post('/posts', data)
         .then(response => {
             console.log(response);
-            this.setState({ submitted: true});
+            this.props.history.push('/posts'); // history estamos accediendo al historial del soporte del disco y de ahi un metodo de insercion ques es el push.
+            //this.setState({ submitted: true});
         }); //POST
 
     }
