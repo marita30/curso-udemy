@@ -7,6 +7,11 @@ import NewPost from './NewPost/NewPost';
 
 
 class Blog extends Component {
+
+    /* Route of guards */
+    state = {
+        auth: false
+    }
     render () { 
         return (
             
@@ -35,7 +40,7 @@ class Blog extends Component {
                 {/* <Route  path="/" exact render={() => <h1>HOME</h1>}/> */} {/* exact es un props booleano, tan solo agregarlo asi lo establece como verdadero y predeterminado es falso. */}
                
                 <Switch>
-                    <Route path="/new-post" component={NewPost}/>
+                    {this.state.auth ? <Route path="/new-post" component={NewPost} /> : null };
                     <Route path="/posts"  component={Posts}/> {/* Ya no vamos a  usar render, ahora usaremos component que deberia representarse en el lugar de     esta ruta. POr ejemplo aqui le decimos que muestre todos los Posts. */} 
                     <Redirect from="/" to="/posts" /> {/* Para redireccionar al usuario. */}
                    {/*  <Route path="/"  component={Posts}/> */}

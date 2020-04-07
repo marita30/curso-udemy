@@ -13,6 +13,8 @@ class NewPost extends Component {
     }
      //Bloquear los accesorios.
     componentDidMount () {
+        /* rutas de guardias */
+       /*  if unath => this.props.history.replace('/posts'); */
         console.log(this.props);
     }
     //Para el botton de add Post. Para poder agregar un nuevo post
