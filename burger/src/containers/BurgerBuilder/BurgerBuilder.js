@@ -114,7 +114,7 @@ class BurgerBuilder extends Component {
 
 
      /* se activara siempre que nosotros hagamos click en el boton Order Now. */
-    purchaseHnadler = () => {
+    purchaseHandler = () => {
 
         this.setState({purchasing: true}); /* establecer el estado del purchasing a true */
 
