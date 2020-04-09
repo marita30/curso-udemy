@@ -1,8 +1,12 @@
 import React from 'react';
+
+import { withRouter } from 'react-router-dom';
+
 import classes from './Burger.css';
 import BurgerIngredient from "./BurgerIngredient/BurgerIngredient";
 
 const burger = (props) => {
+    console.log(props);
     /* Object tiene un metodo clave que extrae las claves de un objeto dado y las convierte en una matriz , por ejemplo en este 
     caso covertira el state de los ingredientes en un string, luego lo mapeamos porque ya es una matriz para poder recorrerla, igKey ES NUESTRO PUNTERO*/
      /* Object.keys(props.ingredients) es para pasar los ingredientes de forma de un arreglo */
@@ -43,4 +47,4 @@ const burger = (props) => {
 };
 
 
-export default burger;
+export default withRouter(burger);
