@@ -16,3 +16,6 @@ El usuario puede crear su propia hamburguesa dinamicamete.
 ## firebase//peticiones ⚙️
 1. en el archivo BurgerBuilder.js tenemos una peticion post para agregar a la base de datos de firebase las ordenes
 axios.post('/orders.json', order).
+
+##Terminal📦
+1. Instalamos react-router-dom para utilizar las rutas --> npm install --save react-router-dom.
