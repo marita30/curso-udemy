@@ -159,6 +159,11 @@ class BurgerBuilder extends Component {
 
         }); */
 
+       /*  lo que hace history es cambiar el componente dependiendo de la ruta que establezca, cambiar la porcion de la paginaque su pagina tiene en esa Pila. */
+
+        this.props.history.push('/checkout');
+
+
     }
 
 
