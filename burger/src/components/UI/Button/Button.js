@@ -5,7 +5,7 @@ const button = (props) => (
 
     <button
         className={[classes.Button, classes[props.btnType]].join('')} /* string */
-        onClick={props.clicked}
+        onClick={props.clicked} /* viene del aechivo orderSummary */
     >{props.children}</button>
     
 ); /* donde devuelvo jsx ()*/
