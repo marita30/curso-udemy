@@ -5,6 +5,7 @@ import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 
+
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import axios from '../../axios-orders';
@@ -130,7 +131,7 @@ class BurgerBuilder extends Component {
     purchaseContinueHandler = () => {
         //alert('You continue!');
         //Declaramos la const order para crear una estructura con la informacion que tendra en la base de datos para las ordenes.
-        this.setState( {loading: true} );
+        /* this.setState( {loading: true} );
         const order = {
             ingredients: this.state.ingredients,
             price: this.state.totalPrice,
@@ -156,7 +157,8 @@ class BurgerBuilder extends Component {
         .catch(error => {
             this.setState({loading: false, purchasing: false});
 
-        });
+        }); */
+
     }
 
 
@@ -183,7 +185,7 @@ class BurgerBuilder extends Component {
                         ingredientRemoved={this.removeIngredientHandler}
                         disabled={disableInfo}
                         purchasable = {this.state.purchasable}
-                        ordered={this.purchaseHnadler} /* viene del archivo js */
+                        ordered={this.purchaseHandler} /* viene del archivo js */
                         price={this.state.totalPrice}/>
                 </Aux>    
             );
@@ -209,6 +211,7 @@ class BurgerBuilder extends Component {
                   {orderSummary}   
                 </Modal>
                 {burger}
+               
                
                    
             </Aux>
