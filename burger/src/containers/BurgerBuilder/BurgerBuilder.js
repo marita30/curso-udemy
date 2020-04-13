@@ -160,8 +160,23 @@ class BurgerBuilder extends Component {
         }); */
 
        /*  lo que hace history es cambiar el componente dependiendo de la ruta que establezca, cambiar la porcion de la paginaque su pagina tiene en esa Pila. */
+        /* Codificar los ingredientes a esta nueva hamburguesa. */
+       const queryParams = [];
+      /*  lt i es un puntero que apuntara a las llaves (ingredients) por ejemplo i apunta ala primera llave bacon luego pasa a queryParams.push 
+       que el encodeURIComponent solo te pasa ls valores en un string y te dice que encodeURIComponent(i) hace referencia ala primer llave que es 
+       bacon + '=' que seria bacon= + encodeURIComponent(this.state.ingredients[i]) hace referencia al valor que es 0 , entonces quedaria
+       "bacon=0" y asi sucesivamente. */
 
-        this.props.history.push('/checkout');
+       for (let i in this.state.ingredients){
+           queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i])); /* encodeURIComponent hace que te renderiza un string para que lo lea la url */
+       }
+       /* Union es que los va a separar con un & por ejemplo "bacon=0&cheese=1&met=2&salad=0"*/
+        const queryString = queryParams.join('&');
+
+        this.props.history.push({
+            pathname: '/checkout',
+            search:'?' + queryString
+        });
 
 
     }
