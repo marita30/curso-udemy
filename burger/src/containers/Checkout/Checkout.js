@@ -12,10 +12,28 @@ class Checkout extends Component {
         }
     }
 
+
+    checkoutCancelledHandler = () => {
+
+        this.props.history.goBack();/*  esto simplemente regresa a la ultima pagina osea al home donde cremos la hamburguesa */
+
+    }
+
+
+    checkoutContinuedHandler = () => {
+
+        this.props.history.replace('/checkout/contact-data');/*  aqui decimos que reemplace la ruta actual con una nueva ruta  */
+
+    }
+
     render (){
         return (
             <div>
-                <CheckoutSummary ingredients={this.state.ingredients}/>
+                <CheckoutSummary 
+                 ingredients={this.state.ingredients}
+                 checkoutCancelled={this.checkoutCancelledHandler}
+                 checkoutContinued={this.checkoutContinuedHandler} /* vienen del archivo CheckoutSummary */
+                />
             </div>
         );
     }
