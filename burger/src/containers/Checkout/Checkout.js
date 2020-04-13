@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+
+import { Route } from 'react-router-dom';
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
-import BurgerBuilder from '../BurgerBuilder/BurgerBuilder';
+import ContactData from './ContactData/ContactData';
 
 class Checkout extends Component {
 
@@ -40,7 +42,7 @@ class Checkout extends Component {
     /* Para el boton continue de la ruta /checkout */
     checkoutContinuedHandler = () => {
 
-        this.props.history.replace('/checkout/contact-data');/*  aqui decimos que reemplace la ruta actual con una nueva ruta  */
+        this.props.history.replace('/checkout/contact-data');/*  aqui decimos que reemplace la ruta actual con una nueva ruta  contact-data viene del archivo ContactData.js*/
 
     }
 
@@ -51,6 +53,10 @@ class Checkout extends Component {
                  ingredients={this.state.ingredients}
                  checkoutCancelled={this.checkoutCancelledHandler}
                  checkoutContinued={this.checkoutContinuedHandler} /* vienen del archivo CheckoutSummary */
+                />
+                <Route 
+                    path={this.props.match.path + '/contact-data'} 
+                    component={ContactData}
                 />
             </div>
         );
