@@ -129,36 +129,7 @@ class BurgerBuilder extends Component {
 
     /* Para seguir continuando con la compra */
     purchaseContinueHandler = () => {
-        //alert('You continue!');
-        //Declaramos la const order para crear una estructura con la informacion que tendra en la base de datos para las ordenes.
-        /* this.setState( {loading: true} );
-        const order = {
-            ingredients: this.state.ingredients,
-            price: this.state.totalPrice,
-            customer: {
-                name: 'M.J',
-
-                address: {
-                    street: 'avenida vickuna mackena 2585',
-                    zipCode: '2585',
-                    country: 'Santiago'
-                },
-
-                email: 'marita@test.com'
-            },
-
-            deliveryMethod: 'fastest'
-        }
-        axios.post('/orders.json', order)//para agregarles las ordenes a firebase, le pasamos como parametros la const order.
-        .then(response => {
-            this.setState({loading: false, purchasing: false});
-
-        })
-        .catch(error => {
-            this.setState({loading: false, purchasing: false});
-
-        }); */
-
+        //alert('You continue!')
        /*  lo que hace history es cambiar el componente dependiendo de la ruta que establezca, cambiar la porcion de la paginaque su pagina tiene en esa Pila. */
         /* Codificar los ingredientes a esta nueva hamburguesa. */
        const queryParams = [];
@@ -170,6 +141,8 @@ class BurgerBuilder extends Component {
        for (let i in this.state.ingredients){
            queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i])); /* encodeURIComponent hace que te renderiza un string para que lo lea la url */
        }
+       /* vamos a pasar tambien el precio. */
+       queryParams.push('price=' + this.state.totalPrice);
        /* Union es que los va a separar con un & por ejemplo "bacon=0&cheese=1&met=2&salad=0"*/
         const queryString = queryParams.join('&');
 
