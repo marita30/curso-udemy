@@ -12,7 +12,7 @@ const checkoutSummary = (props) => {
             <div style={{width:'100%', margin:'auto'}}>
                 <Burger ingredients={props.ingredients}/>
             </div>
-            <Button btnType= "Danger" clicked={props.checkoutCancelled}>CANCEL</Button> {/* arcivo checkout.js */}
+            <Button btnType= "Danger" clicked={props.checkoutCancelled}>CANCEL</Button> {/* arcivo checkout.js  */}
             <Button btnType= "Success" clicked={props.checkoutContinued}>CONTINUE</Button> {/* arcivo checkout.js */}
         </div>
     );
