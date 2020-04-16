@@ -1,7 +1,7 @@
 import React from 'react';
 
 import classes from './Order.css';
-import Orders from '../../containers/Orders/Orders';
+
 
 const order = (props) => {
 
