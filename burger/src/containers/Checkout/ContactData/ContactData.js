@@ -7,6 +7,9 @@ import axios from '../../../axios-orders';
 
 import Spinner from '../../../components/UI/Spinner/Spinner';
 
+/* Para hacer dinamicamente los input del ContactData. */
+import Input from '../../../components/UI/Input/Input';
+
 class ContactData extends Component {
 
     state={
@@ -61,10 +64,10 @@ class ContactData extends Component {
         /* Para el spinner */
         let form = (
             <form>
-                <input className={classes.Input}  type="text" name="name" placeholder="Your Name" />
-                <input className={classes.Input} type="email" name="email" placeholder="Your Mail" />
-                <input className={classes.Input} type="text" name="street" placeholder="Street" />
-                <input className={classes.Input} type="text" name="postal" placeholder="Postal Code" />
+                <Input  inputtype= "input" type="text" name="name" placeholder="Your Name" />
+                <Input  inputtype= "input" type="email" name="email" placeholder="Your Mail" />
+                <Input  inputtype= "input" type="text" name="street" placeholder="Street" />
+                <Input  inputtype= "input" type="text" name="postal" placeholder="Postal Code" />
                 <Button btnType='Success' clicked={this.orderHandler}>Order</Button>
             </form>
         );
