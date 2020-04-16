@@ -13,7 +13,7 @@ class Checkout extends Component {
         
     }
 
-    componentWillMount () {
+    UNSAFE_componentWillMount () {
         const query = new URLSearchParams(this.props.location.search); /* le decimos que busque la locacion de search que esta en el BurgerBuilder.js que incluye el signo de interrogacion, etc */
         /* Declaramos ingredients con un object vacio */
         const ingredients = {};
