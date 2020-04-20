@@ -21,4 +21,6 @@ axios.post('/orders.json', order).
 1. Instalamos react-router-dom para utilizar las rutas --> npm install --save react-router-dom.
 ## Routes.
 1. app.js
-2. BurgerBuilder.js
+2. BurgerBuilder.js.
+
+en el order.js esta la peticin donde mndo a traer la informacin al servidor.
