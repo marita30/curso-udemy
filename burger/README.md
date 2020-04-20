@@ -19,3 +19,6 @@ axios.post('/orders.json', order).
 
 ## Terminal📦
 1. Instalamos react-router-dom para utilizar las rutas --> npm install --save react-router-dom.
+## Routes.
+app.js
+BurgerBuilder.js
