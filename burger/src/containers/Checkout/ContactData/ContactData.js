@@ -101,13 +101,26 @@ class ContactData extends Component {
     }
 
     render (){
+        /* Para el nuevo state con muchos object */
+        const formElementsArray= [];
+        for (let key in this.state.orderForm){ /* Key es el identificador de las llaves de los object que estan en el this.state, name, street, zip code etc. */
+
+            formElementsArray.push({
+                id: key,
+                config: this.state.orderForm[key]
+            });
+        }
         /* Para el spinner */
         let form = (
-            <form>
-                <Input  elementType="..." elementConfig="..." value="..."/>
-                <Input  inputtype= "input" type="email" name="email" placeholder="Your Mail" />
-                <Input  inputtype= "input" type="text" name="street" placeholder="Street" />
-                <Input  inputtype= "input" type="text" name="postal" placeholder="Postal Code" />
+            <form>                
+                {formElementsArray.map(formElement => (
+                    <Input 
+                        key={formElement.id}
+                        elementType={formElement.config.elementType} 
+                        elementConfig={formElement.config.elementConfig}
+                        value={formElement.config.value}
+                    />
+                ))}
                 <Button btnType='Success' clicked={this.orderHandler}>Order</Button>
             </form>
         );
