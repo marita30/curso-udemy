@@ -13,11 +13,63 @@ import Input from '../../../components/UI/Input/Input';
 class ContactData extends Component {
 
     state={
-        name: '',
-        email: '',
-        address: {
-            street: '',
-            postalCode: ''
+
+        orderForm: {
+
+             name: {
+                 elementType: 'input',
+                 elementConfig: {
+                     type: 'text',
+                     placeholder: 'Your Name',
+                 },
+                 value: ''
+             },
+             street:  {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Street',
+                },
+                value: ''
+            } ,
+             zipCode: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'ZIP Code',
+                },
+                value: ''
+             },
+             country: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Country',
+                },
+                value: ''
+             },
+             email:{
+                elementType: 'input',
+                elementConfig: {
+                    type: 'email',
+                    placeholder: 'Your E-Mail',
+                },
+                value: ''
+
+             },
+             deliveryMethod: {
+                elementType: 'select',
+                elementConfig: {
+                    options: [
+                        {value: 'fastest', displayValue: 'Fastest'},
+                        {value: 'cheapest', displayValue: 'Cheapest'}
+
+                    ]
+                },
+                value: ''
+
+             }
+
         },
         loading: false
     }
@@ -31,19 +83,7 @@ class ContactData extends Component {
         const order = {
             ingredients: this.props.ingredients,
             price: this.props.price, /* viene del archivo Checkout */
-            customer: {
-                name: 'M.J',
-
-                address: {
-                    street: 'avenida vickuna mackena 2585',
-                    zipCode: '2585',
-                    country: 'Santiago'
-                },
-
-                email: 'marita@test.com'
-            },
-
-            deliveryMethod: 'fastest'
+            
         }
         axios.post('/orders.json', order)//para agregarles las ordenes a firebase, le pasamos como parametros la const order.
         .then(response => {
@@ -64,7 +104,7 @@ class ContactData extends Component {
         /* Para el spinner */
         let form = (
             <form>
-                <Input  inputtype= "input" type="text" name="name" placeholder="Your Name" />
+                <Input  elementType="..." elementConfig="..." value="..."/>
                 <Input  inputtype= "input" type="email" name="email" placeholder="Your Mail" />
                 <Input  inputtype= "input" type="text" name="street" placeholder="Street" />
                 <Input  inputtype= "input" type="text" name="postal" placeholder="Postal Code" />
