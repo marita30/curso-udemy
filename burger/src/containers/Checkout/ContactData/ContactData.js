@@ -100,6 +100,25 @@ class ContactData extends Component {
 
     }
 
+
+    /* handling user input */
+    inputChangedHandler = (event, inputIdentifier) => {
+
+      /*  copiar el formulario de pedido del state para actualizar */
+      const updateOrderForm = {
+          ...this.state.orderForm
+      };
+      /*       copia de un solo object del formulario del state , inputIdentifier ahor va hacer como key , las llaves osea name, street etc y dependiendo cual sea solo se le hara copia a ese. */
+      const updateFormElement = { 
+          ...updateOrderForm[inputIdentifier]
+        };
+         /* cambia el valor de la variable value que tiene cada object del state */
+        updateFormElement.value = event.target.value;
+        updateOrderForm[inputIdentifier] = updateFormElement;
+        this.setState({orderForm: updateOrderForm});
+
+    }
+
     render (){
         /* Para el nuevo state con muchos object */
         const formElementsArray= [];
@@ -118,7 +137,8 @@ class ContactData extends Component {
                         key={formElement.id}
                         elementType={formElement.config.elementType} 
                         elementConfig={formElement.config.elementConfig}
-                        value={formElement.config.value}
+                        defaultValue={formElement.config.value}
+                        changed={(event) => this.inputChangedHandler(event, formElement.id)}
                     />
                 ))}
                 <Button btnType='Success' clicked={this.orderHandler}>Order</Button>
