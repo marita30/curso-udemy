@@ -1,8 +1,6 @@
 import React from 'react';
 
 import classes from './Input.css';
-import ContactData from '../../../containers/Checkout/ContactData/ContactData';
-
 
 const input = ( props) => {
     let inputElement = null;
