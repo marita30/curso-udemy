@@ -1,6 +1,7 @@
 import React from 'react';
 
 import classes from './Input.css';
+import ContactData from '../../../containers/Checkout/ContactData/ContactData';
 
 
 const input = ( props) => {
@@ -17,7 +18,7 @@ const input = ( props) => {
         case ('textarea'):
             inputElement = <textarea 
                 className={classes.InputElement} {...props.elementConfig} 
-                value={props.defaultValue} onChange={props.changed} />;
+                value={props.defaultValue} onChange={props.changed} />; /* props.changed viene del archivo ContactData.js */
             break;
         case ('select'):
             inputElement = (
