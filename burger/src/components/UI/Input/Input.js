@@ -1,7 +1,7 @@
 import React from 'react';
 
 import classes from './Input.css';
-import ContactData from '../../../containers/Checkout/ContactData/ContactData';
+
 
 const input = ( props) => {
     let inputElement = null;
@@ -12,19 +12,19 @@ const input = ( props) => {
         case ('input'):
             inputElement = <input 
                 className={classes.InputElement} {...props.elementConfig} 
-                value={props.value}/>; /* elelemnetConfig viene del archivo ContactData.js */
+                value={props.defaultValue} onChange={props.changed}/>; /* elelemnetConfig viene del archivo ContactData.js */
             break;
         case ('textarea'):
             inputElement = <textarea 
                 className={classes.InputElement} {...props.elementConfig} 
-                value={props.value} />;
+                value={props.defaultValue} onChange={props.changed} />;
             break;
         case ('select'):
             inputElement = (
                 <select 
-
                     className={classes.InputElement} 
-                    value={props.value}> 
+                    value={props.defaultValue}
+                    onChange={props.changed}> 
                     {props.elementConfig.options.map(option => ( /* esto viene del orden del state  del object deliveryMethod del archivo ContactData.js */
                         <option key={option.value} value={option.value} >
                             {option.displayValue}
@@ -37,7 +37,7 @@ const input = ( props) => {
         default: 
             inputElement = <input 
                 className={classes.InputElement} {...props.elementConfig} 
-                value={props.value} />;
+                value={props.defaultValue}  onChange={props.changed}/>;
     }
 
     return(
