@@ -80,9 +80,17 @@ class ContactData extends Component {
 
          //Declaramos la const order para crear una estructura con la informacion que tendra en la base de datos para las ordenes.
         this.setState( {loading: true} );
+
+        /* handling form submission para mandarlo despues a la base de datos firebase */
+        const formData = {};
+        for (let formElementIdentifier in this.state.orderForm ) {
+            formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value; /* .value le decimos que solo queremos ese valor dependiendo del puntero formElementIdentifier este apuntando si en este caso apunta a name solo seria name={value} */
+        }/* formElementIdentifier es name, street, email , ect de las llaves del orderForm del state. */
+
         const order = {
             ingredients: this.props.ingredients,
             price: this.props.price, /* viene del archivo Checkout */
+            orderData: formData
             
         }
         axios.post('/orders.json', order)//para agregarles las ordenes a firebase, le pasamos como parametros la const order.
@@ -131,7 +139,7 @@ class ContactData extends Component {
         }
         /* Para el spinner */
         let form = (
-            <form>                
+            <form onSubmit={this.orderHandler}>                
                 {formElementsArray.map(formElement => (
                     <Input 
                         key={formElement.id}
