@@ -196,6 +196,8 @@ class ContactData extends Component {
                         elementType={formElement.config.elementType} 
                         elementConfig={formElement.config.elementConfig}
                         defaultValue={formElement.config.value}
+                        invalid={!formElement.config.valid} /* para dar css en el archivo input que muestre de un color los input cuando esten false y cuando esten true de otro color */
+                        shouldValidate= {formElement.config.validation} /* Para saber que el ultimo object no tiene regla porque es un menu desplegable. */
                         changed={(event) => this.inputChangedHandler(event, formElement.id)}
                     />
                 ))}
