@@ -12,11 +12,11 @@ const input = ( props) => {
      /* agregando CSS.  props invalid viene del archivo contactData.js y props.shouldValidate igual lo que hacemos es verificar que uno de los object del state del contactaData no tiene reglas por que es un menu desplegable
      props.touched es para validar si el usuario ha dado click en algun input si es true no se establezca la classe pero si es false que si se establezca.*/
      
-    if (props.invalid && props.shouldValidate && props.touched) {
+    if (!props.valid && props.shouldValidate && props.touched) {
         inputClasses.push(classes.Invalid); 
     }
      /* Para imprimir un error al usuario */
-    if (props.invalid && props.touched) {
+    if (!props.valid && props.touched) { /* los dos tienen que ser verdadero para que imprima el error*/
         validationError = <p>Please enter a valid value!</p>;
     }
 
