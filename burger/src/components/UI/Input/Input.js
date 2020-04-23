@@ -8,8 +8,9 @@ const input = ( props) => {
     let inputElement = null;
     /* agregando CSS. */
     const inputClasses = [classes.InputElement];
-     /* agregando CSS.  props invalid viene del archivo contactData.js y props.shouldValidate igual lo que hacemos es verificar que uno de los object del state del contactaData no tiene reglas por que es un menu desplegable*/
-    if (props.invalid && props.shouldValidate) {
+     /* agregando CSS.  props invalid viene del archivo contactData.js y props.shouldValidate igual lo que hacemos es verificar que uno de los object del state del contactaData no tiene reglas por que es un menu desplegable
+     props.touched es para validar si el usuario ha dado click en algun input si es true no se establezca la classe pero si es false que si se establezca.*/
+    if (props.invalid && props.shouldValidate && props.touched) {
         inputClasses.push(classes.Invalid); 
     }
 
