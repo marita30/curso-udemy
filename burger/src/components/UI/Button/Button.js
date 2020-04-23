@@ -4,6 +4,7 @@ import classes from './Button.css';
 const button = (props) => (
 
     <button
+        disabled={props.disabled} /* viene del archivo contactData.js */
         className={[classes.Button, classes[props.btnType]].join('')} /* string */
         onClick={props.clicked} /* viene del aechivo orderSummary */
     >{props.children}</button>
