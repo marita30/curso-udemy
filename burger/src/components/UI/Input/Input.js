@@ -2,16 +2,22 @@ import React from 'react';
 
 import classes from './Input.css';
 
-
-
 const input = ( props) => {
     let inputElement = null;
+    let validationError = null;
+   
+     
     /* agregando CSS. */
     const inputClasses = [classes.InputElement];
      /* agregando CSS.  props invalid viene del archivo contactData.js y props.shouldValidate igual lo que hacemos es verificar que uno de los object del state del contactaData no tiene reglas por que es un menu desplegable
      props.touched es para validar si el usuario ha dado click en algun input si es true no se establezca la classe pero si es false que si se establezca.*/
+     
     if (props.invalid && props.shouldValidate && props.touched) {
         inputClasses.push(classes.Invalid); 
+    }
+     /* Para imprimir un error al usuario */
+    if (props.invalid && props.touched) {
+        validationError = <p>Please enter a valid value!</p>;
     }
 
     /* LOS PROPS VIENEN DEL ARCHIVO ContactData.JS */
@@ -54,6 +60,7 @@ const input = ( props) => {
 
             <label className={classes.Label}>{props.label}</label>
             {inputElement}
+            {validationError}
             
         </div>
     );
