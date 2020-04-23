@@ -27,7 +27,8 @@ class ContactData extends Component {
                  validation: {
                      required: true
                  },
-                 valid: false
+                 valid: false,
+                 touched: false
              },
              street:  {
                 elementType: 'input',
@@ -39,7 +40,8 @@ class ContactData extends Component {
                 validation: {
                     required: true
                 },
-                valid: false
+                valid: false,
+                touched: false
             } ,
              zipCode: {
                 elementType: 'input',
@@ -53,7 +55,8 @@ class ContactData extends Component {
                     minLength: 5,
                     maxLength: 6
                 },
-                valid: false
+                valid: false,
+                touched: false
              },
              country: {
                 elementType: 'input',
@@ -65,7 +68,8 @@ class ContactData extends Component {
                 validation: {
                     required: true
                 },
-                valid: false
+                valid: false,
+                touched: false
              },
              email:{
                 elementType: 'input',
@@ -77,7 +81,8 @@ class ContactData extends Component {
                 validation: {
                     required: true
                 },
-                valid: false
+                valid: false,
+                touched: false /* es para verificar si el usuario toco un input */
 
              },
              deliveryMethod: {
@@ -171,6 +176,7 @@ class ContactData extends Component {
          /* cambia el valor de la variable value que tiene cada object del state */
         updateFormElement.value = event.target.value;
         updateFormElement.valid = this.checkValidity(updateFormElement.value, updateFormElement.validation)
+        updateFormElement.touched = true;
         updateOrderForm[inputIdentifier] = updateFormElement;
         console.log(updateFormElement);
         this.setState({orderForm: updateOrderForm});
@@ -198,6 +204,7 @@ class ContactData extends Component {
                         defaultValue={formElement.config.value}
                         invalid={!formElement.config.valid} /* para dar css en el archivo input que muestre de un color los input cuando esten false y cuando esten true de otro color */
                         shouldValidate= {formElement.config.validation} /* Para saber que el ultimo object no tiene regla porque es un menu desplegable. */
+                        touched = {formElement.config.touched}
                         changed={(event) => this.inputChangedHandler(event, formElement.id)}
                     />
                 ))}
