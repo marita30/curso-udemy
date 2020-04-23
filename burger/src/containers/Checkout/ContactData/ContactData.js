@@ -134,10 +134,10 @@ class ContactData extends Component {
     /* Para la cnfiguracion del validation que los campos no deben de ir vacio. */
     checkValidity (value, rules) {
         
-        let isValid = false;
+        let isValid = true;
 
         if (rules.required){ /* si esto es cierto entonces */
-            isValid = value.trim() !== ''; /* que si isValid es igual a la comparacion de los valores deberia ser igual si no es igual a una cadena vacia, si no es igual entonces isValid es true. trim remueve todos los espacios en blancos */
+            isValid = value.trim() !== '' && isValid; /* que si isValid es igual a la comparacion de los valores deberia ser igual si no es igual a una cadena vacia, si no es igual entonces isValid es true. trim remueve todos los espacios en blancos */
 
         }
 
