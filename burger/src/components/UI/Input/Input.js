@@ -6,24 +6,30 @@ import classes from './Input.css';
 
 const input = ( props) => {
     let inputElement = null;
+    /* agregando CSS. */
+    const inputClasses = [classes.InputElement];
+     /* agregando CSS.  props invalid viene del archivo contactData.js y props.shouldValidate igual lo que hacemos es verificar que uno de los object del state del contactaData no tiene reglas por que es un menu desplegable*/
+    if (props.invalid && props.shouldValidate) {
+        inputClasses.push(classes.Invalid); 
+    }
 
     /* LOS PROPS VIENEN DEL ARCHIVO ContactData.JS */
     switch (props.elementType) {
 
         case ('input'):
             inputElement = <input 
-                className={classes.InputElement} {...props.elementConfig} 
+                className={inputClasses.join(' ')} {...props.elementConfig} 
                 value={props.defaultValue} onChange={props.changed}/>; /* elelemnetConfig viene del archivo ContactData.js */
             break;
         case ('textarea'):
             inputElement = <textarea 
-                className={classes.InputElement} {...props.elementConfig} 
+                className={inputClasses} {...props.elementConfig} 
                 value={props.defaultValue} onChange={props.changed} />; /* props.changed viene del archivo ContactData.js */
             break;
         case ('select'):
             inputElement = (
                 <select 
-                    className={classes.InputElement} 
+                    className={inputClasses} 
                     value={props.defaultValue}
                     onChange={props.changed}> 
                     {props.elementConfig.options.map(option => ( /* esto viene del orden del state  del object deliveryMethod del archivo ContactData.js */
@@ -37,7 +43,7 @@ const input = ( props) => {
             break;
         default: 
             inputElement = <input 
-                className={classes.InputElement} {...props.elementConfig} 
+                className={inputClasses} {...props.elementConfig} 
                 value={props.defaultValue}  onChange={props.changed}/>;
     }
 
