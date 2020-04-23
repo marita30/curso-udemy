@@ -94,12 +94,16 @@ class ContactData extends Component {
 
                     ]
                 },
-                value: ''
+                value: '',
+                valid: true
 
              }
 
         },
+        /* Para el boton order del contactaData para que habilite cuando todos lo campos esten llenos. */
+        formIsValid: false,
         loading: false
+
     }
     /* Cuando haga click en el boton Order envie el pedido al servidor. */
     orderHandler = (event) => {
@@ -179,7 +183,13 @@ class ContactData extends Component {
         updateFormElement.touched = true;
         updateOrderForm[inputIdentifier] = updateFormElement;
         console.log(updateFormElement);
-        this.setState({orderForm: updateOrderForm});
+
+        /* Para validar el boton que se active cuando todos los capos del formulario esten llenos. */
+        let formIsValid = true;
+        for (let  inputIdentifier in updateOrderForm){
+            formIsValid = updateOrderForm[inputIdentifier].valid && formIsValid;
+        }
+        this.setState({orderForm: updateOrderForm, formIsValid: formIsValid});
 
     }
 
@@ -210,7 +220,7 @@ class ContactData extends Component {
                         changed={(event) => this.inputChangedHandler(event, formElement.id)}
                     />
                 ))}
-                <Button btnType='Success'>Order</Button>
+                <Button btnType='Success' disabled={!this.state.formIsValid}>Order</Button>
             </form>
         );
         if (this.state.loading) {
