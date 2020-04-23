@@ -194,10 +194,12 @@ class ContactData extends Component {
             });
         }
         /* Para el spinner */
+        
         let form = (
             <form onSubmit={this.orderHandler}>                
                 {formElementsArray.map(formElement => (
                     <Input 
+                        
                         key={formElement.id}
                         elementType={formElement.config.elementType} 
                         elementConfig={formElement.config.elementConfig}
