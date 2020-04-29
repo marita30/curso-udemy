@@ -6,6 +6,7 @@
 .pnp.js
 /http-Ajax/node_modules
 /assigment2/node_modules
+/redux--01-start/node_modules
 /routing--react-suspense-start/node_modules
 # testing
 /coverage
