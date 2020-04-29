@@ -95,6 +95,7 @@ class ContactData extends Component {
                     ]
                 },
                 value: '',
+                validation:{},
                 valid: true
 
              }
@@ -144,6 +145,10 @@ class ContactData extends Component {
     checkValidity (value, rules) {
         
         let isValid = true;
+        if (!rules){
+            return true;
+
+        }
 
         if (rules.required){ /* si esto es cierto entonces */
             isValid = value.trim() !== '' && isValid; /* que si isValid es igual a la comparacion de los valores deberia ser igual si no es igual a una cadena vacia, si no es igual entonces isValid es true. trim remueve todos los espacios en blancos */
