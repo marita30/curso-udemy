@@ -45,7 +45,7 @@ const mapStateToProps = state => {
     return {
 
         ctr: state.counter, /* denme el valor del counter en nuestro global administrado  */
-        add: state.add
+        
     };
 };
 
