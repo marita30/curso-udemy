@@ -33,6 +33,18 @@ const reducer  = (state = initialState, action) => {
                 results: state.results.concat({id: new Date(), value: state.counter}) /* utilizamos concat para actualizar la matriz, es casi igual a push , pero lo que hace push es que toca el resultado original en el state original y concat no , entonces le decimos que le pase a la matriz results(state.counter). */
 
             }
+        case 'DELETE_RESULT':
+            /* const id = 1;
+            /* copia de mi matriz results */
+            /* const newArray = [...state.results];
+            newArray.splice(id,1)  */
+            //metodo de carpeta.
+            const updatedArray = state.results.filter(result => result.id !== action.resultElId); /* filter devuelve una nueva matriz, no toca la anterior, devuelve una nueva filtrada 
+            por lo tanto si hay una igual a la ID */
+            return {
+                ...state,
+                results: updatedArray
+            }
     }
    
 
