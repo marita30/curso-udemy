@@ -70,7 +70,7 @@ const mapDispatchToProps = dispatch => {
         onAddCounter: () => dispatch ({type: 'ADD', value: 5}),
         onSubtractCounter: () => dispatch ({type: 'SUBTRACT', value: 5}),
         onStoreResult: () => dispatch({type: 'STORE_RESULT'}),
-        onDeleteResult: () => dispatch({type: 'DELETE_RESULT', resultElId: id}) //resultElId viene del archivo reducer.js
+        onDeleteResult: (id) => dispatch({type: 'DELETE_RESULT', resultElId: id}) //resultElId viene del archivo reducer.js
 
     };
 };
