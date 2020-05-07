@@ -57,7 +57,7 @@ const mapStateToProps = state => {
     return {
 
         ctr: state.counter, /* denme el valor del counter en nuestro global administrado  */
-        storedResults: state.results
+        storedResults: state.results /* viene el results de reducer.js */
         
     };
 };
