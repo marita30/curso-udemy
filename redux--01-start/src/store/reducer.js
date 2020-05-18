@@ -40,14 +40,13 @@ const reducer  = (state = initialState, action) => {
             newArray.splice(id,1)  */
             //metodo de carpeta.
             const updatedArray = state.results.filter(result => result.id !== action.resultElId); /* filter devuelve una nueva matriz, no toca la anterior, devuelve una nueva filtrada 
-            por lo tanto si hay una igual a la ID */
+            por lo tanto metemelo los id    ue sean diferente con action.resultELId  FILTER ES COMO UN SELECT*/
             return {
                 ...state,
                 results: updatedArray
             }
     }
    
-
 
     return state;
 }

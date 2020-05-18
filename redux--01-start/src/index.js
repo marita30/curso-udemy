@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { createStore } from 'redux';
+// para conectar la store
 import { Provider } from 'react-redux';
+
 import reducer from './store/reducer';
 
 
