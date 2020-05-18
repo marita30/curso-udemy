@@ -2,34 +2,15 @@ import React, { Component } from 'react';
 /* Conectando el store con react */
 import { connect } from 'react-redux';
 
+// Importando todas las acciones.
+import * as actionTypes from '../../store/actions';
+
 
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
-import reducer from '../../store/reducer';
+
 
 class Counter extends Component {
-    state = {
-        counter: 0
-       
-    }
-
-    counterChangedHandler = ( action, value ) => {
-        switch ( action ) {
-            case 'inc':
-                this.setState( ( prevState ) => { return { counter: prevState.counter + 1 } } )
-                break;
-            case 'dec':
-                this.setState( ( prevState ) => { return { counter: prevState.counter - 1 } } )
-                break;
-            case 'add':
-                this.setState( ( prevState ) => { return { counter: prevState.counter + value } } )
-                break;
-            case 'sub':
-                this.setState( ( prevState ) => { return { counter: prevState.counter - value } } )
-                break;
-        }
-    }
-
     render () {
         return (
             <div>
@@ -65,12 +46,12 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
 
-        onIncrementCounter: () => dispatch({type: 'INCREMENT'}),
-        onDecrementCounter: () => dispatch ({type: 'DECREMENT'}),
-        onAddCounter: () => dispatch ({type: 'ADD', value: 5}),
-        onSubtractCounter: () => dispatch ({type: 'SUBTRACT', value: 5}),
-        onStoreResult: () => dispatch({type: 'STORE_RESULT'}),
-        onDeleteResult: (id) => dispatch({type: 'DELETE_RESULT', resultElId: id}) //resultElId viene del archivo reducer.js
+        onIncrementCounter: () => dispatch({type: actionTypes.INCREMENT}),
+        onDecrementCounter: () => dispatch ({type: actionTypes.DECREMENT}),
+        onAddCounter: () => dispatch ({type: actionTypes.ADD, value: 5}),
+        onSubtractCounter: () => dispatch ({type: actionTypes.SUBTRACT, value: 5}),
+        onStoreResult: () => dispatch({type: actionTypes.STORE_RESULT}),
+        onDeleteResult: (id) => dispatch({type: actionTypes.DELETE_RESULT, resultElId: id}) //resultElId viene del archivo reducer.js
 
     };
 };
