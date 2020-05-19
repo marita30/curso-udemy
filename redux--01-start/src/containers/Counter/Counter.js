@@ -20,7 +20,7 @@ class Counter extends Component {
                 <CounterControl label="Add 5" clicked={this.props.onAddCounter}  />
                 <CounterControl label="Subtract 5" clicked={this.props.onSubtractCounter}  />
                 <hr />
-                <button onClick={this.props.onStoreResult}>Store Results</button>
+                <button onClick={ () => this.props.onStoreResult(this.props.ctr)}>Store Results</button>
                 <ul>
                     {this.props.storedResults.map(strResult => (
 
@@ -37,8 +37,8 @@ class Counter extends Component {
 const mapStateToProps = state => {
     return {
 
-        ctr: state.counter, /* denme el valor del counter en nuestro global administrado  */
-        storedResults: state.results /* viene el results de reducer.js */
+        ctr: state.ctr.counter, /* denme el valor del counter en nuestro global administrado  el .ctr que va en medio del state viene del archvo index.js */
+        storedResults: state.res.results /* viene el results de reducer.js  el .res que va en medio del state viene del archvo index.js*/
         
     };
 };
@@ -50,7 +50,7 @@ const mapDispatchToProps = dispatch => {
         onDecrementCounter: () => dispatch ({type: actionTypes.DECREMENT}),
         onAddCounter: () => dispatch ({type: actionTypes.ADD, value: 5}),
         onSubtractCounter: () => dispatch ({type: actionTypes.SUBTRACT, value: 5}),
-        onStoreResult: () => dispatch({type: actionTypes.STORE_RESULT}),
+        onStoreResult: (result) => dispatch({type: actionTypes.STORE_RESULT, result: result}), /* result viene del archivo result.js */
         onDeleteResult: (id) => dispatch({type: actionTypes.DELETE_RESULT, resultElId: id}) //resultElId viene del archivo reducer.js
 
     };
