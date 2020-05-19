@@ -25,7 +25,7 @@ class Persons extends Component {
 
 const mapStateToProps = state => {
     return {
-        prs: state.persons
+        prs: state.persons /*  viene del archivo reducer.js el state.persons */
     };
 };
 
