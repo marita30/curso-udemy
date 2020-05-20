@@ -181,8 +181,9 @@ class BurgerBuilder extends Component {
             
                     <Burger ingredients={this.props.ings}/>
                     <BuildControls
-                        ingredientAdded={this.addIngredientHandler} 
-                        ingredientRemoved={this.removeIngredientHandler}
+                     /*  cambiamos el .this.addIngredientHandler por la nueva configuracion de redux del mapDispatchToProps */
+                        ingredientAdded={this.props.onIngredientsAdded} 
+                        ingredientRemoved={this.props.onIngredientsRemoved}
                         disabled={disableInfo}
                         purchasable = {this.state.purchasable}
                         ordered={this.purchaseHandler} /* viene del archivo js */
