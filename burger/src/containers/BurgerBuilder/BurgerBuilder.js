@@ -5,6 +5,12 @@ import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 
+/* Para conectar el reducer al burgerBuilder */
+import { connect } from 'react-redux';
+
+/* PARA LOS EVENTOS QUE TIENE ACTION */
+import * as actionTypes from '../../store/actions';
+
 
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
@@ -213,5 +219,19 @@ class BurgerBuilder extends Component {
 
 };
 
+/* Creando los dos metodos de redux */
+const mapStateToProps = state  => {
+    return {
+        ings: state.ingredients
+    };
+}
+const mapDispatchToProps =  dispatch => {
+    return {
+        onIngredientsAdded: (ingName) => dispatch({type: actionTypes.ADD_INGREDIENTS, ingredientName: ingName}),
+        onIngredientsRemoved: (ingName) => dispatch({type: actionTypes.REMOVE_INGREDIENTS, ingredientName: ingName}), /* ingredientName viene del archivo reducer.js */
 
-export default withErrorHandler(BurgerBuilder, axios);   
+    };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(BurgerBuilder, axios));   
