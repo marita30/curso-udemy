@@ -41,13 +41,13 @@ class BurgerBuilder extends Component {
     }
     //obtener los ingredeintes desde el back end
     componentDidMount () {
-        axios.get('https://burger-1e5b1.firebaseio.com/ingredients.json')
+      /*   axios.get('https://burger-1e5b1.firebaseio.com/ingredients.json')
         .then(response => {
             this.setState({ingredients: response.data});
         })
         .catch(error => {
             this.setState({error: true})
-        });
+        }); */
     }
 
     /* Actualizar el estado del purchasable , boton OrderNow */
