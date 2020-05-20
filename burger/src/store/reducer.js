@@ -24,6 +24,11 @@ const reducer  = (state= initialState, action) => {
             };
         case actionTypes.REMOVE_INGREDIENT:
             return {
+                ...state,
+                ingredients: {
+                    ...state.ingredients,
+                    [action.ingredientName]: state.ingredients[action.ingredientName] - 1 /* en el primer [action.ingredientName] recibimos la llave de los ingredients bacon, salad, etc y luego de los : recibimos el valor + 1 */
+                }
 
             };
         default: 
