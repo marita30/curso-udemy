@@ -6,13 +6,24 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+/* Para envolver la aplicacion-- osea para conectar redux con react */
+import { Provider } from 'react-redux'; 
+/* Creando el store */
+import { createStore } from 'redux';
+/* importando reducer.js */
+import reducer from './store/reducer';
+
+const store = createStore(reducer);
+
 const app = (
 
-    <BrowserRouter>
+    <Provider store={store}>
+        <BrowserRouter>
 
-        <App />
+             <App />
     
-    </BrowserRouter>
+        </BrowserRouter>
+    </Provider>
 
 );
 
