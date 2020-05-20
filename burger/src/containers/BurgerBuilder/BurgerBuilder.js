@@ -36,7 +36,6 @@ class BurgerBuilder extends Component {
 
     /* Objeto */
     state = {
-        ingredients: null,
         totalPrice: 4, /* precio base */
         purchasable: false ,/* se convierte en verdad cuando podemos comprar una hamburguesa osea que la ahmburguesa tenga al menos un ingrediente. */
         purchasing: false ,/* para saber si se hizo click en el boton OrderNow */
@@ -164,7 +163,8 @@ class BurgerBuilder extends Component {
     render(){
 
         const disableInfo = {
-            ...this.state.ingredients
+           /*  cambiamos el .state.ingredients por la nueva configuracion de redux */
+            ...this.props.ings
         };
         for (let Key in disableInfo){ /* Cmprobaremos si es cero o menos y se actualizara para seahabilitar el boton. */
 
@@ -174,11 +174,12 @@ class BurgerBuilder extends Component {
         let orderSummary = null;
         //Para solucionar el error de la variable ingredients, que ahora esta como null en el state y que los ingredientes esten en firebase.
         let burger = this.state.error ? <p>Ingredients can't be loaded!</p> : <Spinner />;
-        if(this.state.ingredients) { // si el state ingredients no son nulos que muestre el bloque del burger.
+        /*  cambiamos el .state.ingredients por la nueva configuracion de redux */
+        if(this.props.ings) { // si el state ingredients no son nulos que muestre el bloque del burger.
             burger = (
                 <Aux>
             
-                    <Burger ingredients={this.state.ingredients}/>
+                    <Burger ingredients={this.props.ings}/>
                     <BuildControls
                         ingredientAdded={this.addIngredientHandler} 
                         ingredientRemoved={this.removeIngredientHandler}
@@ -190,7 +191,8 @@ class BurgerBuilder extends Component {
             );
            //Para solucionar el error de la variable ingredients, que ahora esta como null en el state y que lo ingredientes esten en frebase
             orderSummary =   < OrderSummary  
-                ingredients={this.state.ingredients} /* viene del archivo orderSummary.js */
+             /*  cambiamos el .state.ingredients por la nueva configuracion de redux */
+                ingredients={this.props.ings} /* viene del archivo orderSummary.js */
                 price={this.state.totalPrice}
                 purchaseCancelled = {this.purchaseCancelHandler}
                 purchaseContinued = {this.purchaseContinueHandler}
