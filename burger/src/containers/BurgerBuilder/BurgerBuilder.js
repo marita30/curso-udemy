@@ -230,8 +230,8 @@ const mapStateToProps = state  => {
 }
 const mapDispatchToProps =  dispatch => {
     return {
-        onIngredientsAdded: (ingName) => dispatch({type: actionTypes.ADD_INGREDIENTS, ingredientName: ingName}),
-        onIngredientsRemoved: (ingName) => dispatch({type: actionTypes.REMOVE_INGREDIENTS, ingredientName: ingName}), /* ingredientName viene del archivo reducer.js */
+        onIngredientsAdded: (ingName) => dispatch({type: actionTypes.ADD_INGREDIENT, ingredientName: ingName}),
+        onIngredientsRemoved: (ingName) => dispatch({type: actionTypes.REMOVE_INGREDIENT, ingredientName: ingName}), /* ingredientName viene del archivo reducer.js */
 
     };
 }
