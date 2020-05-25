@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 // para conectar la store
 import { Provider } from 'react-redux';
 
@@ -32,8 +32,10 @@ const logger = store  => {
     }
 };
 
+/* Para ver el estado de nuestra aplicacion */
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 /* create store */
-const store = createStore(rootReducer, applyMiddleware(logger));
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger)));
 
 
 /* instalando la tienda en la aplicacion React. */
