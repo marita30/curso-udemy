@@ -28,7 +28,6 @@ class BurgerBuilder extends Component {
 
     /* Objeto */
     state = {
-        totalPrice: 4, /* precio base */
         purchasable: false ,/* se convierte en verdad cuando podemos comprar una hamburguesa osea que la ahmburguesa tenga al menos un ingrediente. */
         purchasing: false ,/* para saber si se hizo click en el boton OrderNow */
         loading: false,//spinner
@@ -64,51 +63,51 @@ class BurgerBuilder extends Component {
     }
 
     /* Agregar Ingrediente */
-    addIngredientHandler = (type) => {
-        const oldCount = this.state.ingredients[type]; /* Primero calculamos el contador viejo. */
-        const updatedCount= oldCount + 1; /*  despues /* actualizamos el contador viejo por updateCounted. */ 
-        const updateIngredients = {
-            ...this.state.ingredients /* los puntos son para distribuir las propiedades del antiguo estado de ingredientes. */
-        };
+    // addIngredientHandler = (type) => {
+    //     const oldCount = this.state.ingredients[type]; /* Primero calculamos el contador viejo. */
+    //     const updatedCount= oldCount + 1; /*  despues /* actualizamos el contador viejo por updateCounted. */ 
+    //     const updateIngredients = {
+    //         ...this.state.ingredients /* los puntos son para distribuir las propiedades del antiguo estado de ingredientes. */
+    //     };
 
-        updateIngredients[type] = updatedCount; /* ACtualizar los ingredientes */
+    //     updateIngredients[type] = updatedCount; /* ACtualizar los ingredientes */
 
-        const priceAddition = INGREDIENT_PRICES[type]; /* Precio de la matriz INGREDIENT_PRICES */
+    //     const priceAddition = INGREDIENT_PRICES[type]; /* Precio de la matriz INGREDIENT_PRICES */
 
-        const oldPrice = this.state.totalPrice; /* ver el valor viejo que es el precio base 4 del state */
+    //     const oldPrice = this.state.totalPrice; /* ver el valor viejo que es el precio base 4 del state */
 
-        const newPrice = oldPrice + priceAddition; /* Calcular el precio nuevo  */
+    //     const newPrice = oldPrice + priceAddition; /* Calcular el precio nuevo  */
 
-        this.setState({totalPrice: newPrice, ingredients: updateIngredients}); /* Establecer un estado , osea establecer el precio total para el nuevo precio de igual manera con os ingredientes.*/
-        this.updatePurchasableState(updateIngredients); /* Para el botton ordernow */
-    };
+    //     this.setState({totalPrice: newPrice, ingredients: updateIngredients}); /* Establecer un estado , osea establecer el precio total para el nuevo precio de igual manera con os ingredientes.*/
+    //     this.updatePurchasableState(updateIngredients); /* Para el botton ordernow */
+    // };
 
    /*  Eiminar ingrediente */
-    removeIngredientHandler = (type) => {
+    // removeIngredientHandler = (type) => {
 
-        const oldCount = this.state.ingredients[type]; /* Primero calculamos el contador viejo. */
-        if (oldCount <= 0 ){
-            return; 
-       }
-        const updatedCount= oldCount - 1; /*  despues /* actualizamos el contador viejo por updateCounted. */ 
+    //     const oldCount = this.state.ingredients[type]; /* Primero calculamos el contador viejo. */
+    //     if (oldCount <= 0 ){
+    //         return; 
+    //    }
+    //     const updatedCount= oldCount - 1; /*  despues /* actualizamos el contador viejo por updateCounted. */ 
 
-        const updateIngredients = {
-            ...this.state.ingredients /* los puntos son para distribuir las propiedades del antiguo estado de ingredientes. */
-        };
+    //     const updateIngredients = {
+    //         ...this.state.ingredients /* los puntos son para distribuir las propiedades del antiguo estado de ingredientes. */
+    //     };
 
-        updateIngredients[type] = updatedCount; /* ACtualizar los ingredientes */
+    //     updateIngredients[type] = updatedCount; /* ACtualizar los ingredientes */
 
-        const priceDeduction= INGREDIENT_PRICES[type]; /* Precio de la matriz INGREDIENT_PRICES */
+    //     const priceDeduction= INGREDIENT_PRICES[type]; /* Precio de la matriz INGREDIENT_PRICES */
 
-        const oldPrice = this.state.totalPrice; /* ver el valor viejo que es el precio base 4 del state */
+    //     const oldPrice = this.state.totalPrice; /* ver el valor viejo que es el precio base 4 del state */
 
-        const newPrice = oldPrice - priceDeduction; /* Calcular el precio nuevo  */
+    //     const newPrice = oldPrice - priceDeduction; /* Calcular el precio nuevo  */
 
-        this.setState({totalPrice: newPrice, ingredients: updateIngredients}); /* establecer el estado de totalPrice y de ingredients */
+    //     this.setState({totalPrice: newPrice, ingredients: updateIngredients}); /* establecer el estado de totalPrice y de ingredients */
 
-        this.updatePurchasableState(updateIngredients); /* Para el botton ordernow */
+    //     this.updatePurchasableState(updateIngredients); /* Para el botton ordernow */
 
-    };
+    // };
 
 
      /* se activara siempre que nosotros hagamos click en el boton Order Now. */
@@ -179,14 +178,15 @@ class BurgerBuilder extends Component {
                         disabled={disableInfo}
                         purchasable = {this.state.purchasable}
                         ordered={this.purchaseHandler} /* viene del archivo js */
-                        price={this.state.totalPrice}/>
+                         /*  cambiamos el .state.totalrce por .props.price que viene del metodo mapStateToProps*/
+                        price={this.props.price}/>
                 </Aux>    
             );
            //Para solucionar el error de la variable ingredients, que ahora esta como null en el state y que lo ingredientes esten en frebase
             orderSummary =   < OrderSummary  
              /*  cambiamos el .state.ingredients por la nueva configuracion de redux */
                 ingredients={this.props.ings} /* viene del archivo orderSummary.js */
-                price={this.state.totalPrice}
+                price={this.props.price}  /*  cambiamos el .state.totalrce por .props.price que viene del metodo mapStateToProps*/
                 purchaseCancelled = {this.purchaseCancelHandler}
                 purchaseContinued = {this.purchaseContinueHandler}
             />; 
@@ -217,7 +217,8 @@ class BurgerBuilder extends Component {
 /* Creando los dos metodos de redux */
 const mapStateToProps = state  => {
     return {
-        ings: state.ingredients
+        ings: state.ingredients,
+        price: state.totalPrice
     };
 }
 const mapDispatchToProps =  dispatch => {
