@@ -28,7 +28,7 @@ class BurgerBuilder extends Component {
 
     /* Objeto */
     state = {
-        purchasable: false ,/* se convierte en verdad cuando podemos comprar una hamburguesa osea que la ahmburguesa tenga al menos un ingrediente. */
+        // purchasable: false ,/* se convierte en verdad cuando podemos comprar una hamburguesa osea que la ahmburguesa tenga al menos un ingrediente. */
         purchasing: false ,/* para saber si se hizo click en el boton OrderNow */
         loading: false,//spinner
         error: false //error.
@@ -47,7 +47,7 @@ class BurgerBuilder extends Component {
     }
 
     /* Actualizar el estado del purchasable , boton OrderNow */
-    updatePurchasableState ( ingredients){
+    updatePurchaseState ( ingredients){
        
         const sum = Object.keys(ingredients) /* creamo una matriz del object */
             .map(igKey => {
@@ -58,7 +58,9 @@ class BurgerBuilder extends Component {
             return sum + el;
         }, 0);
 
-        this.setState({purchasable: sum > 0});
+        // this.setState({purchasable: sum > 0});
+        // REDUX
+        return sum > 0;
 
     }
 
@@ -176,7 +178,7 @@ class BurgerBuilder extends Component {
                         ingredientAdded={this.props.onIngredientsAdded} 
                         ingredientRemoved={this.props.onIngredientsRemoved}
                         disabled={disableInfo}
-                        purchasable = {this.state.purchasable}
+                        purchasable = {this.updatePurchaseState(this.props.ings)}
                         ordered={this.purchaseHandler} /* viene del archivo js */
                          /*  cambiamos el .state.totalrce por .props.price que viene del metodo mapStateToProps*/
                         price={this.props.price}/>
