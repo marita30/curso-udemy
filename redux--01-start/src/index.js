@@ -5,6 +5,9 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 // para conectar la store
 import { Provider } from 'react-redux';
 
+/* Para code asincrono redux-thunk */
+import thunk from 'redux-thunk';
+
 import counterReducer from './store/reducers/counter';
 import resultReducer from './store/reducers/result';
 
@@ -35,7 +38,7 @@ const logger = store  => {
 /* Para ver el estado de nuestra aplicacion */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 /* create store */
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger)));
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger, thunk)));
 
 
 /* instalando la tienda en la aplicacion React. */
