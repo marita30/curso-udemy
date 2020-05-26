@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 /* Conectando el store con react */
 import { connect } from 'react-redux';
 
-import  {increment} from '../../store/actions/actions';
+import  * as actionCreators from '../../store/actions/actions';
 
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
@@ -15,7 +15,7 @@ class Counter extends Component {
                 <CounterOutput value={this.props.ctr} />
                 <CounterControl label="Increment" clicked={this.props.onIncrementCounter} />
                 <CounterControl label="Decrement" clicked={this.props.onDecrementCounter}  />
-                <CounterControl label="Add 5" clicked={this.props.onAddCounter}  />
+                <CounterControl label="Add 10" clicked={this.props.onAddCounter}  />
                 <CounterControl label="Subtract 5" clicked={this.props.onSubtractCounter}  />
                 <hr />
                 <button onClick={ () => this.props.onStoreResult(this.props.ctr)}>Store Results</button>
@@ -44,12 +44,12 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
 
-        onIncrementCounter: () => dispatch(increment()), /* viene del archivo actions.js */
-        onDecrementCounter: () => dispatch ({type: actionTypes.DECREMENT}),
-        onAddCounter: () => dispatch ({type: actionTypes.ADD, value: 5}),
-        onSubtractCounter: () => dispatch ({type: actionTypes.SUBTRACT, value: 5}),
-        onStoreResult: (result) => dispatch({type: actionTypes.STORE_RESULT, result: result}), /* result viene del archivo result.js */
-        onDeleteResult: (id) => dispatch({type: actionTypes.DELETE_RESULT, resultElId: id}) //resultElId viene del archivo reducer.js
+        onIncrementCounter: () => dispatch(actionCreators.increment()), /* viene del archivo actions.js */
+        onDecrementCounter: () => dispatch (actionCreators.decrement()),
+        onAddCounter: () => dispatch (actionCreators.add(10)),
+        onSubtractCounter: () => dispatch (actionCreators.subtract(5)),
+        onStoreResult: (result) => dispatch(actionCreators.storeResult(result)), /* result viene del archivo result.js */
+        onDeleteResult: (id) => dispatch(actionCreators.deleteResult(id)) //resultElId viene del archivo reducer.js
 
     };
 };
