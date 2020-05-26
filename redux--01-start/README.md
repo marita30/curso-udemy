@@ -1,3 +1,11 @@
+```
+Instalamos npm install --save redux-thunk --> Para installar un nuevo middleware que ayuda cuando es asincrono el code.
+```
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
