@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 /* Conectando el store con react */
 import { connect } from 'react-redux';
 
-// Importando todas las acciones.
-import * as actionTypes from '../../store/actions';
-
+import  {increment} from '../../store/actions/actions';
 
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
@@ -46,7 +44,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
 
-        onIncrementCounter: () => dispatch({type: actionTypes.INCREMENT}),
+        onIncrementCounter: () => dispatch(increment()), /* viene del archivo actions.js */
         onDecrementCounter: () => dispatch ({type: actionTypes.DECREMENT}),
         onAddCounter: () => dispatch ({type: actionTypes.ADD, value: 5}),
         onSubtractCounter: () => dispatch ({type: actionTypes.SUBTRACT, value: 5}),
