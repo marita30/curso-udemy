@@ -38,13 +38,24 @@ export const subtract = (valor) => {
 
     };
 };
-
-export const storeResult= (res) => {
+/* Para la configuracion del redux-thunk */
+export const saveResult = (res) => {
     return {
         type: STORE_RESULT,
         result: res 
+    }
+}
 
-    };
+export const storeResult= (res) => {
+    return dispatch => {
+         /* Configurando para qejecutar los tiemposde espera y solo despues de dos segundos queremos almacenar el resultado */
+        setTimeout(() => {
+            dispatch(saveResult(res))
+    
+         },2000);
+
+    }
+
 };
 
 export const deleteResult= (resElId) => {
