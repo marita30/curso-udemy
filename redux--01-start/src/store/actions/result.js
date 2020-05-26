@@ -9,7 +9,10 @@ export const saveResult = (res) => {
 }
 
 export const storeResult= (res) => {
-    return dispatch => {
+    return (dispatch, getState) => {
+        /* obteniendo el contador antiguo ejecutando el estado get  */
+        const oldCounter = getState().ctr.counter;
+        console.log(oldCounter);
          /* Configurando para qejecutar los tiemposde espera y solo despues de dos segundos queremos almacenar el resultado */
         setTimeout(() => {
             dispatch(saveResult(res))
