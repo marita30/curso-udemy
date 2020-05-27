@@ -9,7 +9,7 @@ import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import { connect } from 'react-redux';
 
 /* PARA LOS EVENTOS QUE TIENE ACTION */
-import * as actionTypes from '../../store/actions';
+import * as burgerBuilderActions from '../../store/actions/index';
 
 
 import Spinner from '../../components/UI/Spinner/Spinner';
@@ -225,8 +225,8 @@ const mapStateToProps = state  => {
 }
 const mapDispatchToProps =  dispatch => {
     return {
-        onIngredientsAdded: (ingName) => dispatch({type: actionTypes.ADD_INGREDIENT, ingredientName: ingName}),
-        onIngredientsRemoved: (ingName) => dispatch({type: actionTypes.REMOVE_INGREDIENT, ingredientName: ingName}), /* ingredientName viene del archivo reducer.js */
+        onIngredientsAdded: (ingName) => dispatch(burgerBuilderActions.addIngredients(ingName)),
+        onIngredientsRemoved: (ingName) => dispatch(burgerBuilderActions.removeIngredients(ingName)), /* ingredientName viene del archivo reducer.js */
 
     };
 }
