@@ -11,9 +11,9 @@ import { Provider } from 'react-redux';
 /* Creando el store */
 import { createStore } from 'redux';
 /* importando reducer.js */
-import reducer from './store/reducers/reducer';
+import burgerBuilderReducer from './store/reducers/burgerBuilder';
                                     /* PARA SABER EL ESTADO DE NUESTRA APLICACION CON REDUX DEVTOOLS */
-const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(burgerBuilderReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 const app = (
 
