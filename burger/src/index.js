@@ -8,12 +8,22 @@ import * as serviceWorker from './serviceWorker';
 
 /* Para envolver la aplicacion-- osea para conectar redux con react */
 import { Provider } from 'react-redux'; 
+
+/* Importando thunk que es un middleware que nos permite codigo asincrono */
+import thunk from 'redux-thunk';
+
 /* Creando el store */
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 /* importando reducer.js */
 import burgerBuilderReducer from './store/reducers/burgerBuilder';
+
+/* thunk  */
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
                                     /* PARA SABER EL ESTADO DE NUESTRA APLICACION CON REDUX DEVTOOLS */
-const store = createStore(burgerBuilderReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(burgerBuilderReducer, composeEnhancers( 
+    applyMiddleware(thunk)
+));
 
 const app = (
 
