@@ -5,6 +5,9 @@ import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 
+/* Axios */
+import axios from '../../axios-orders';
+
 /* Para conectar el reducer al burgerBuilder */
 import { connect } from 'react-redux';
 
@@ -14,7 +17,7 @@ import * as burgerBuilderActions from '../../store/actions/index';
 
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
-import axios from '../../axios-orders';
+
 
 
 class BurgerBuilder extends Component {
@@ -30,20 +33,14 @@ class BurgerBuilder extends Component {
     state = {
         // purchasable: false ,/* se convierte en verdad cuando podemos comprar una hamburguesa osea que la ahmburguesa tenga al menos un ingrediente. */
         purchasing: false ,/* para saber si se hizo click en el boton OrderNow */
-        loading: false,//spinner
-        error: false //error.
+       /*  loading: false,//spinner
+        error: false //error. */
     
 
     }
     //obtener los ingredeintes desde el back end
     componentDidMount () {
-         axios.get('https://burger-1e5b1.firebaseio.com/ingredients.json')
-        .then(response => {
-            this.setState({ingredients: response.data});
-        })
-        .catch(error => {
-            this.setState({error: true})
-        }); 
+         
     }
 
     /* Actualizar el estado del purchasable , boton OrderNow */
@@ -194,12 +191,12 @@ class BurgerBuilder extends Component {
             />; 
         }
 
-        //para el spinner
+       /*  //para el spinner
         
         if(this.state.loading) {
             orderSummary = < Spinner />;
 
-        }
+        } */
         
         return(
             <Aux>
