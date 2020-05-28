@@ -128,19 +128,6 @@ class ContactData extends Component {
             orderData: formData
             
         }
-        axios.post('/orders.json', order)//para agregarles las ordenes a firebase, le pasamos como parametros la const order.
-        .then(response => {
-            this.setState({loading: false});
-            this.props.history.push('/');/*  Para que luego que le click al boton order de la ruta /checkout/Contact-data se redireccione a home */
-
-        })
-        .catch(error => {
-            this.setState({loading: false});
-
-        });
-       
-
-
     }
 
     /* Para la cnfiguracion del validation que los campos no deben de ir vacio. */
