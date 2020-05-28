@@ -1,6 +1,7 @@
 
-
 import * as actionTypes from './actionTypes';
+/* Axios */
+import axios from '../../axios-orders';
 
 
 /* Add Ingredients */
@@ -21,3 +22,34 @@ export const removeIngredients= (ingsName) => {
     }
 };
 
+
+/* Utilizando thunk  */
+export const setIngredients = (ingredients) => {
+    return {
+        type: actionTypes.SET_INGREDIENTS,
+        ingredients: ingredients
+
+    };
+};
+
+/* Error */
+export const fetchIngredientsFailed = () => {
+    return {
+        type: actionTypes.FETCH_INGREDIENTS_FAILED
+    };
+};
+
+/* Utilizando thunk  para codigo asincrono*/
+
+export const initIngredients = () => {
+    return dispatch =>  {
+        axios.get('https://burger-1e5b1.firebaseio.com/ingredients.json')
+        .then(response => {
+            dispatch(setIngredients(response.data));
+        })
+        .catch(error => {
+            dispatch(fetchIngredientsFailed());
+        }); 
+
+    }
+}
