@@ -12,6 +12,10 @@ import Spinner from '../../../components/UI/Spinner/Spinner';
 /* Para hacer dinamicamente los input del ContactData. */
 import Input from '../../../components/UI/Input/Input';
 
+import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
+
+import * as actions from '../../../store/actions/index';
+
 class ContactData extends Component {
 
     state={
@@ -114,7 +118,7 @@ class ContactData extends Component {
         event.preventDefault();
 
          //Declaramos la const order para crear una estructura con la informacion que tendra en la base de datos para las ordenes.
-        this.setState( {loading: true} );
+        /* this.setState( {loading: true} ); */
 
         /* handling form submission para mandarlo despues a la base de datos firebase */
         const formData = {};
@@ -126,8 +130,10 @@ class ContactData extends Component {
             ingredients: this.props.ings,
             price: this.props.price, /* viene del archivo Checkout */
             orderData: formData
-            
         }
+
+        /* Viene del metodo de abajo de redux mapDispatchToProps, esto contiene el axios.post de la ordenes */
+        this.props.onOrderBurger(order);
     }
 
     /* Para la cnfiguracion del validation que los campos no deben de ir vacio. */
@@ -238,5 +244,12 @@ const mapStateToProps = state => {
     }
 };
 
+const mapDispatchToProps = dispatch => {
+    return {
 
-export default connect(mapStateToProps)(ContactData);
+        onOrderBurger: (orderData) => dispatch(actions.purchaseBurgerStart(orderData))
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(ContactData, axios));
