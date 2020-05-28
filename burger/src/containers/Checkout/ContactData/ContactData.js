@@ -108,8 +108,8 @@ class ContactData extends Component {
 
         },
         /* Para el boton order del contactaData para que habilite cuando todos lo campos esten llenos. */
-        formIsValid: false,
-        loading: false
+        formIsValid: false
+      /*   loading: false */
 
     }
     /* Cuando haga click en el boton Order envie el pedido al servidor. */
@@ -223,7 +223,7 @@ class ContactData extends Component {
                 <Button btnType='Success' disabled={!this.state.formIsValid}>Order</Button>
             </form>
         );
-        if (this.state.loading) {
+        if (this.props.loading) {
             form = <Spinner />;
         }
         return (
@@ -239,7 +239,8 @@ class ContactData extends Component {
 const mapStateToProps = state => {
     return {
         ings: state.ingredients,
-        price: state.totalPrice
+        price: state.totalPrice,
+        loading: state.loading
 
     }
 };
@@ -247,7 +248,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
 
-        onOrderBurger: (orderData) => dispatch(actions.purchaseBurgerStart(orderData))
+        onOrderBurger: (orderData) => dispatch(actions.purchaseBurger(orderData))
     }
 }
 
