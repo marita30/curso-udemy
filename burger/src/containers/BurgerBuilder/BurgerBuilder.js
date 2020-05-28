@@ -40,6 +40,8 @@ class BurgerBuilder extends Component {
     }
     //obtener los ingredeintes desde el back end
     componentDidMount () {
+
+        this.props.onInitIngredients();
          
     }
 
@@ -163,7 +165,7 @@ class BurgerBuilder extends Component {
         //Para solucionar el error de la variable ingredients, que ahora esta como null en el state
         let orderSummary = null;
         //Para solucionar el error de la variable ingredients, que ahora esta como null en el state y que los ingredientes esten en firebase.
-        let burger = this.state.error ? <p>Ingredients can't be loaded!</p> : <Spinner />;
+        let burger = this.props.error ? <p>Ingredients can't be loaded!</p> : <Spinner />;
         /*  cambiamos el .state.ingredients por la nueva configuracion de redux */
         if(this.props.ings) { // si el state ingredients no son nulos que muestre el bloque del burger.
             burger = (
@@ -217,13 +219,15 @@ class BurgerBuilder extends Component {
 const mapStateToProps = state  => {
     return {
         ings: state.ingredients,
-        price: state.totalPrice
+        price: state.totalPrice,
+        error: state.error
     };
 }
 const mapDispatchToProps =  dispatch => {
     return {
         onIngredientsAdded: (ingName) => dispatch(burgerBuilderActions.addIngredients(ingName)),
         onIngredientsRemoved: (ingName) => dispatch(burgerBuilderActions.removeIngredients(ingName)), /* ingredientName viene del archivo reducer.js */
+        onInitIngredients: () => dispatch(burgerBuilderActions.initIngredients())
 
     };
 }
