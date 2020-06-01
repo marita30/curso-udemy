@@ -7,6 +7,8 @@ export {
 
 export {
     purchaseBurger,
-    purchaseInit
+    purchaseInit,
+    /* Orders */
+    getOrders
 
 } from './order';
