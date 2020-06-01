@@ -12,3 +12,9 @@ export const PURCHASE_BURGER_START = "PURCHASE_BURGER_START ";
 
 /* Se enciara cada vez que carguemos la pagina de pago */
 export const PURCHASE_INIT = "PURCHASE_INIT";
+
+
+/* Ordenes */
+
+export const ORDERS_GET_SUCESS = 'ORDERS_GET_SUCESS';
+export const ORDERS_GET_FAIL = 'ORDERS_GET_FAIL';
