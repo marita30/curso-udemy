@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 import ContactData from './ContactData/ContactData';
 
@@ -51,21 +51,28 @@ class Checkout extends Component {
     }
 
     render (){
-        return (
-            <div>
-                <CheckoutSummary 
-                 /*  cambiamos el .state.ingredients por .props.ings que viene del metodo mapStateToProps*/
-                 ingredients={this.props.ings}
-                 checkoutCancelled={this.checkoutCancelledHandler}
-                 checkoutContinued={this.checkoutContinuedHandler} /* vienen del archivo CheckoutSummary */
-                />
-                <Route 
-                    path={this.props.match.path + '/contact-data'} 
-                    // render={(props)=> ( <ContactData ingredients={this.state.ingredients} price={this.state.totalPrice} {...props} 
-                    component= {ContactData}/> {/*  {...props} aquis e tomara todos los datos de contactData.js que tomara props.history*/} 
-                />
-            </div>
-        );
+        let summary =  <Redirect to="/" />
+        if (this.props.ings) {
+            summary = (
+             <div>
+                    <CheckoutSummary 
+                        /*  cambiamos el .state.ingredients por .props.ings que viene del metodo mapStateToProps*/
+                        ingredients={this.props.ings}
+                        checkoutCancelled={this.checkoutCancelledHandler}
+                        checkoutContinued={this.checkoutContinuedHandler} /* vienen del archivo CheckoutSummary */
+                    />
+
+                    <Route 
+                        path={this.props.match.path + '/contact-data'} 
+                            // render={(props)=> ( <ContactData ingredients={this.state.ingredients} price={this.state.totalPrice} {...props} 
+                        component= {ContactData}/> {/*  {...props} aquis e tomara todos los datos de contactData.js que tomara props.history*/}
+                    />
+             </div>
+
+            );
+        }
+
+        return summary;
     }
     
 }
