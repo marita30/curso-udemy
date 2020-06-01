@@ -6,7 +6,11 @@ import { Route, Redirect } from 'react-router-dom';
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 import ContactData from './ContactData/ContactData';
 
+import * as actions from '../../store/actions/index';
+
 class Checkout extends Component {
+
+
 
     // state ={
     //     ingredients:null,
@@ -53,8 +57,11 @@ class Checkout extends Component {
     render (){
         let summary =  <Redirect to="/" />
         if (this.props.ings) {
+            /* Le decimos que si todavia purchased que es el proceso de la compra no se ha realizado que lo mantenga ahi mientras tanto si ya termino que lo redireccione a home */
+            const purchasedRedirect = this.props.purchased  ? <Redirect to="/" /> : null
             summary = (
              <div>
+                 {purchasedRedirect}
                     <CheckoutSummary 
                         /*  cambiamos el .state.ingredients por .props.ings que viene del metodo mapStateToProps*/
                         ingredients={this.props.ings}
@@ -79,10 +86,13 @@ class Checkout extends Component {
 
 const mapStateToProps = state => {
     return {
-        ings: state.burgerBuilder.ingredients
+        ings: state.burgerBuilder.ingredients,
+        purchased: state.order.purchased
     }
 
 };
+
+
 
 
 
