@@ -30,7 +30,7 @@ export const purchaseBurger = (orderData) => {
         axios.post('/orders.json', orderData)//para agregarles las ordenes a firebase, le pasamos como parametros la const order.
         .then(response => {
             console.log(response.data);
-            dispatch(purchaseBurgerSuccess(response.data, orderData))
+            dispatch(purchaseBurgerSuccess(response.data.name, orderData))
             /* this.props.history.push('/');/*  Para que luego que le click al boton order de la ruta /checkout/Contact-data se redireccione a home */ 
 
         })
