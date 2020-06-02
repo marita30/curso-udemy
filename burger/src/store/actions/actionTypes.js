@@ -1,6 +1,7 @@
 export const ADD_INGREDIENT = "ADD_INGREDIENT";
 export const REMOVE_INGREDIENT = "REMOVE_INGREDIENT";
 export const SET_INGREDIENTS = "SET_INGREDIENTS";
+
 /* Error */
 export const FETCH_INGREDIENTS_FAILED = "FETCH_INGREDIENTS_FAILED";
 
@@ -18,3 +19,9 @@ export const PURCHASE_INIT = "PURCHASE_INIT";
 
 export const ORDERS_GET_SUCESS = 'ORDERS_GET_SUCESS';
 export const ORDERS_GET_FAIL = 'ORDERS_GET_FAIL';
+
+/* Authenticate */
+
+export const AUTH_START = 'AUTH_STAR';
+export const AUTH_SUCESS = 'AUTH_SUCESS';
+export const AUTH_FAIL = "AUTH_FAIL";
