@@ -12,3 +12,8 @@ export {
     getOrders
 
 } from './order';
+
+export {
+    auth
+
+} from './auth'
