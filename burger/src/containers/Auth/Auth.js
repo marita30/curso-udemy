@@ -43,6 +43,38 @@ class Auth extends Component {
         }   
     }
 
+     /* Para la cnfiguracion del validation que los campos no deben de ir vacio. */
+     checkValidity (value, rules) {
+        
+        let isValid = true;
+        if (!rules){
+            return true;
+
+        }
+
+        if (rules.required){ /* si esto es cierto entonces */
+            isValid = value.trim() !== '' && isValid; /* que si isValid es igual a la comparacion de los valores deberia ser igual si no es igual a una cadena vacia, si no es igual entonces isValid es true. trim remueve todos los espacios en blancos */
+
+        }
+
+        /* para validar la langitud de los input */
+        if (rules.minLength){
+            isValid = value.length >= rules.minLength
+        }
+
+         /* para validar la langitud de los input */
+         if (rules.maxLength){
+            isValid = value.length <= rules.maxLength
+        }
+
+
+        return isValid;
+
+    }
+
+    
+
+
     render () {
          /* Para el nuevo state con muchos object */
          const formElementsArray= [];
