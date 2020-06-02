@@ -5,6 +5,9 @@ import Layout from './hoc/Layout/Layout';
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
 import Checkout from './containers/Checkout/Checkout';
 
+/* Athentication */
+import Auth from './containers/Auth/Auth';
+
 import Orders from './containers/Orders/Orders';
 
 class App extends Component{
@@ -15,6 +18,8 @@ class App extends Component{
 
           <Switch>
 
+            {/* Uthenticate */}
+            <Route  path="/auth" component={Auth} />
             <Route path="/Checkout" component={Checkout} />
             <Route path="/orders" component={Orders} /> {/* el boton para que se direccione aqui esta en el archivo NavigationItems.js */}
             <Route path="/" exact component={BurgerBuilder} />
