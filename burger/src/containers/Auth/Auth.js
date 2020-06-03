@@ -9,6 +9,9 @@ import classes from './Auth.css';
 import {connect} from 'react-redux';
 import * as actions from '../../store/actions/index';
 
+/* Soinner */
+import Spinner from '../../components/UI/Spinner/Spinner';
+
 class Auth extends Component {
 
     state = {
@@ -117,7 +120,7 @@ class Auth extends Component {
              });
          }
 
-         const form = formElementsArray.map( formElement => (
+         let form = formElementsArray.map( formElement => (
              <Input 
                 key={formElement.id}
                 elementType={formElement.config.elementType} 
@@ -130,6 +133,11 @@ class Auth extends Component {
             />
 
          ));
+
+         /* spinner */
+         if (this.props.loading){
+             form = <Spinner />
+         }
 
         return (
             <div className={classes.Auth}>
@@ -149,6 +157,7 @@ class Auth extends Component {
 
 const mapStateToProps = state => {
     return {
+        loading: state.auth.loading /* Viene del reducer auth */
 
     }
 }
