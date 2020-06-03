@@ -26,10 +26,12 @@ export const purchaseBurgerStart = () => {
     };
 };
 
-export const purchaseBurger = (orderData) => {
+/* ContactData  */
+
+export const purchaseBurger = (orderData, token) => {
     return dispatch => {
         dispatch(purchaseBurgerStart());
-        axios.post('/orders.json', orderData)//para agregarles las ordenes a firebase, le pasamos como parametros la const order.
+        axios.post('/orders.json?auth=' + token, orderData)//para agregarles las ordenes a firebase, le pasamos como parametros la const order.
         .then(response => {
             console.log(response.data);
             dispatch(purchaseBurgerSuccess(response.data.name, orderData))
@@ -71,9 +73,9 @@ export const ordersGetSuccess = (orderData) => {
     };
 };
 
-export const getOrders = () => {
+export const getOrders = (token) => {
     return dispatch => {
-        axios.get('/orders.json')
+        axios.get('/orders.json?auth=' + token)
             .then(res => {
                 const fetcheOrders = [];
                 /* me va a traer todas las ordenes que estan en el backend en firebase, key hace refencia a los id de las ordenes */
