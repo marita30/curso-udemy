@@ -133,7 +133,7 @@ class ContactData extends Component {
         }
 
         /* Viene del metodo de abajo de redux mapDispatchToProps, esto contiene el axios.post de la ordenes */
-        this.props.onOrderBurger(order);
+        this.props.onOrderBurger(order, this.props.token);
     }
 
     /* Para la cnfiguracion del validation que los campos no deben de ir vacio. */
@@ -240,7 +240,8 @@ const mapStateToProps = state => {
     return {
         ings: state.burgerBuilder.ingredients,
         price: state.burgerBuilder.totalPrice,
-        loading: state.order.loading
+        loading: state.order.loading,
+        token: state.auth.token
 
     }
 };
@@ -248,7 +249,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
 
-        onOrderBurger: (orderData) => dispatch(actions.purchaseBurger(orderData))
+        onOrderBurger: (orderData, token) => dispatch(actions.purchaseBurger(orderData, token))
     }
 }
 
