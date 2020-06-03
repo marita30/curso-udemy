@@ -137,10 +137,20 @@ class Auth extends Component {
          /* spinner */
          if (this.props.loading){
              form = <Spinner />
+         };
+
+         /* Error */
+         let errorMessage = null;
+         if (this.props.error){
+             errorMessage = (
+                 /* .message solo esta disponible porque estamos utilizando el error que proviene de firebase */
+                 <p>{this.props.error.message}</p>
+             );    
          }
 
         return (
             <div className={classes.Auth}>
+                {errorMessage}
                 <form onSubmit={this.submitHandler}>
                     {form}
                     <Button btnType="Success" > SUBMIT  </Button>   
@@ -157,7 +167,8 @@ class Auth extends Component {
 
 const mapStateToProps = state => {
     return {
-        loading: state.auth.loading /* Viene del reducer auth */
+        loading: state.auth.loading, /* Viene del reducer auth */
+        error: state.auth.error
 
     }
 }
