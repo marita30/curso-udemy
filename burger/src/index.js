@@ -20,13 +20,17 @@ import burgerBuilderReducer from './store/reducers/burgerBuilder';
 /* CombineReducers */
 import orderReducer from './store/reducers/order';
 
+/* Reducer auth */
+import authReducer from './store/reducers/auth';
+
 /* thunk  */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 /* Combine reducer */
 const rootReducer =  combineReducers({
     burgerBuilder: burgerBuilderReducer,
-    order: orderReducer
+    order: orderReducer,
+    auth: authReducer
 })
 
                                     /* PARA SABER EL ESTADO DE NUESTRA APLICACION CON REDUX DEVTOOLS */
