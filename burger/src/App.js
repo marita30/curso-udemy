@@ -7,6 +7,7 @@ import Checkout from './containers/Checkout/Checkout';
 
 /* Athentication */
 import Auth from './containers/Auth/Auth';
+import Logout from './containers/Auth/Logout/Logout';
 
 import Orders from './containers/Orders/Orders';
 
@@ -20,6 +21,7 @@ class App extends Component{
 
             {/* Uthenticate */}
             <Route  path="/auth" component={Auth} />
+            <Route path="/logout" component={Logout} />
             <Route path="/Checkout" component={Checkout} />
             <Route path="/orders" component={Orders} /> {/* el boton para que se direccione aqui esta en el archivo NavigationItems.js */}
             <Route path="/" exact component={BurgerBuilder} />
