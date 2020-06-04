@@ -47,7 +47,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SET_AUTH_REDIRECT_PATH:
             return {
                 ...state,
-                authRedirect: action.path
+                authRedirectPath: action.path
             }
 
         default:
