@@ -5,7 +5,9 @@ const initialState = {
     token: null,
     userId: null,
     error: null,
-    loading: false
+    loading: false,
+    /* redirecting the user to the checkout page */
+    authRedirect: '/'
 };
 
 
@@ -40,6 +42,12 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 token: null,
                 userId: null
+            }
+        /* redirecting the user to the checkout page */
+        case actionTypes.SET_AUTH_REDIRECT_PATH:
+            return {
+                ...state,
+                authRedirect: action.path
             }
 
         default:
