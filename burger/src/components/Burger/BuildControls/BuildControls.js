@@ -29,7 +29,8 @@ const buildControls = (props) => (
         <button 
         className = {classes.OrderButton}
         disabled= {!props.purchasable}
-        onClick={props.ordered}>ORDER NOW</button>
+        /* si el usuario esta authenticate puede order now de lo contrario se le mostrara Sign up para poder ordenar-- isAuth viene del archivo BurgerBuilder.js */
+        onClick={props.ordered}>{props.isAuth ? 'ORDER NOW' : 'SIGN UP TO ORDER'}</button>
 
 
 
