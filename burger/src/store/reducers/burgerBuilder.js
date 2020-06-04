@@ -3,7 +3,9 @@ import * as actionTypes from "../actions/actionTypes";
 const initialState = {
     ingredients: null,
     totalPrice: 4, 
-    error: false
+    error: false,
+    /* redirecting the user to the checkout page */
+    building: false
 };
 
 const INGREDIENT_PRICES = {
@@ -24,7 +26,8 @@ const reducer  = (state= initialState, action) => {
                     [action.ingredientName]: state.ingredients[action.ingredientName] + 1 /* en el primer [action.ingredientName] recibimos la llave de los ingredients bacon, salad, etc y luego de los : recibimos el valor + 1 */
                 },
                 /* Actualizar el precio */
-                totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
+                totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName],
+                building: true
 
             };
         case actionTypes.REMOVE_INGREDIENT:
@@ -35,7 +38,8 @@ const reducer  = (state= initialState, action) => {
                     [action.ingredientName]: state.ingredients[action.ingredientName] - 1 /* en el primer [action.ingredientName] recibimos la llave de los ingredients bacon, salad, etc y luego de los : recibimos el valor + 1 */
                 },
                 /* Actualizar el precio */
-                totalPrice: state.totalPrice - INGREDIENT_PRICES[action.ingredientName]
+                totalPrice: state.totalPrice - INGREDIENT_PRICES[action.ingredientName],
+                building: true
 
             };
             /* Llamamos a los ingredientes establecidos */
@@ -49,7 +53,8 @@ const reducer  = (state= initialState, action) => {
                     meat: action.ingredients.meat
                 },
                 totalPrice: 4,
-                error: false
+                error: false,
+                building: false
 
             };
         case actionTypes.FETCH_INGREDIENTS_FAILED:
