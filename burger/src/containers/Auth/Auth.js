@@ -12,6 +12,9 @@ import * as actions from '../../store/actions/index';
 /* Soinner */
 import Spinner from '../../components/UI/Spinner/Spinner';
 
+/* Redirect */
+import { Redirect } from 'react-router-dom';
+
 class Auth extends Component {
 
     state = {
@@ -148,8 +151,15 @@ class Auth extends Component {
              );    
          }
 
+         /* Redirect para cuando e usuario le de click a authenticated*/
+         let authRedirect = null;
+         if (this.props.isAuthenticated) {
+            authRedirect= <Redirect to="/" /> 
+         }
+
         return (
             <div className={classes.Auth}>
+                {authRedirect}
                 {errorMessage}
                 <form onSubmit={this.submitHandler}>
                     {form}
@@ -168,7 +178,9 @@ class Auth extends Component {
 const mapStateToProps = state => {
     return {
         loading: state.auth.loading, /* Viene del reducer auth */
-        error: state.auth.error
+        error: state.auth.error,
+        /* Si el token no es nullo , estamos authenticados */
+        isAuthenticated: state.auth.token !== null
 
     }
 }
