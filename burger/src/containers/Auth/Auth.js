@@ -189,7 +189,7 @@ const mapStateToProps = state => {
         /* Si el token no es nullo , estamos authenticados */
         isAuthenticated: state.auth.token !== null,
         buildingBurger: state.burgerBuilder.building,
-        authRedirectPath: state.auth.authRedirectPath
+        authRedirectPath: state.auth.authRedirectPath /* viene del archivo reducer / auth */
 
     }
 }
