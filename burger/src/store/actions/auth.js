@@ -44,6 +44,15 @@ export const checkAuthTimeout = (expirationTime) => {
 };
 
 
+/* redirecting the user to the checkout page */
+export const setAuthRedirectPath = (path) => {
+    return {
+        type: actionTypes.SET_AUTH_REDIRECT_PATH,
+        path: path
+    }
+}
+
+
 export const auth = (email, password, isSignup) => {
     return dispatch => {
         dispatch(authStart());
