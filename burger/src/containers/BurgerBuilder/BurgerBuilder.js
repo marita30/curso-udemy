@@ -117,7 +117,7 @@ class BurgerBuilder extends Component {
         if (this.props.isAuthenticated){
             this.setState({purchasing: true}); /* establecer el estado del purchasing a true */
         } else {
-            /* redirecting the user to the checkout page */
+            /* redirecting the user to the checkout page , /checkout siempre se disparara cuando vayamos a la pagina de authenticacion */
             this.props.onSetAuthRedirectPath('/checkout');
             this.props.history.push('/auth');
         }
