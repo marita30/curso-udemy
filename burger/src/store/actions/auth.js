@@ -69,6 +69,15 @@ export const auth = (email, password, isSignup) => {
         axios.post(url, authData)
         .then(response => {
             console.log(response);
+
+                                          // new Date().getTime() trae la fecha en timeStamp     
+           const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000)
+            /* Trabajand con localstore para guardar el token , setItem es para almacenar un elemento local , en este caso el token*/
+            localStorage.setItem('token', response.data.idToken);
+            /* Cuando caduca e token */
+            localStorage.setItem('expirationDate', expirationDate);
+
+
             dispatch(authSucess(response.data.idToken, response.data.localId));
             dispatch(checkAuthTimeout(response.data.expiresIn));
         })
