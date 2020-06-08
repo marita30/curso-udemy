@@ -26,6 +26,10 @@ export const authFail = (error) => {
 };
 
 export const logout = () => {
+    /* Para borrar el localStorage */
+    localStorage.removeItem('token');
+    localStorage.removeItem('expirationDate');
+    localStorage.removeItem('userId');
     return {
         type: actionTypes.AUTH_LOGOUT
     };
@@ -76,6 +80,8 @@ export const auth = (email, password, isSignup) => {
             localStorage.setItem('token', response.data.idToken);
             /* Cuando caduca e token */
             localStorage.setItem('expirationDate', expirationDate);
+            /* el ide del usuario */
+            localStorage.setItem('userId', response.data.localId);
 
 
             dispatch(authSucess(response.data.idToken, response.data.localId));
@@ -86,5 +92,28 @@ export const auth = (email, password, isSignup) => {
             dispatch(authFail(error.response.data.error));
         });
 
+    };
+};
+
+/* creador de acciones de utilidad para el localStorage, Para iniciar sesion automaticamnete con exito en el usuario si tenemos un token valido */
+
+export const authCheckState = () => {
+    return dispatch => {
+        const token = localStorage.getItem('token');
+        /* SI token es null */
+        if (!token) {
+            dispatch(logout());
+        } else {
+            const expirationDate = new Date(localStorage.getItem('expirationDate'));
+            if (expirationDate <= new Date) {
+                dispatch(logout())
+            } else {
+                const userId = localStorage.getItem('userId');
+                dispatch(authSucess(token, userId));
+                                        //   pasamos la feha de de vencimiento menos la nueva fecha y obtener la hora.
+                dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime())/ 1000));  
+
+            }   
+        } 
     };
 };
