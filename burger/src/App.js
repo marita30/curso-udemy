@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter, Redirect} from 'react-router-dom';
 
 import Layout from './hoc/Layout/Layout';
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
@@ -21,28 +21,47 @@ class App extends Component{
   }
 
   render() {
-    return (
-      <div>
-        <Layout>
 
-          <Switch>
-
+    /* Para hacer la configuracion de que si no esta authenticado el usuario no puede ir a la routes orders hasta ue este authenticado y si le da orders lo va a redirect a home */
+    let routes = (
+      <Switch>
+        <Route  path="/auth" component={Auth} />
+        <Route path="/" exact component={BurgerBuilder} />
+        <Redirect to="/" />
+      </Switch>
+    );
+    /* Si esta authenticado */
+    if (this.props.isAuthenticated) {
+      routes = (
+        <Switch>
             {/* Uthenticate */}
-            <Route  path="/auth" component={Auth} />
             <Route path="/logout" component={Logout} />
             <Route path="/Checkout" component={Checkout} />
             <Route path="/orders" component={Orders} /> {/* el boton para que se direccione aqui esta en el archivo NavigationItems.js */}
             <Route path="/" exact component={BurgerBuilder} />
+            <Redirect to="/" />
+            
+      </Switch>
+      );
 
-          </Switch>
-        
+    }
 
+    return (
+      <div>
+        <Layout>
+            {routes}
         </Layout>
       
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.auth.token !== null
+  };
+};
 
 /* PARA EL DISPATCH DE ACTIONS/AUTH */
 const mapDispatchToProps = dispatch => {
@@ -53,4 +72,4 @@ const mapDispatchToProps = dispatch => {
 }
 
 
-export default withRouter(connect(null, mapDispatchToProps)(App));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
