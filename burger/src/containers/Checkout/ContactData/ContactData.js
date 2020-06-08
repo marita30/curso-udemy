@@ -129,7 +129,8 @@ class ContactData extends Component {
         const order = {
             ingredients: this.props.ings,
             price: this.props.price, /* viene del archivo Checkout */
-            orderData: formData
+            orderData: formData,
+            userId: this.props.userId
         }
 
         /* Viene del metodo de abajo de redux mapDispatchToProps, esto contiene el axios.post de la ordenes */
@@ -241,7 +242,8 @@ const mapStateToProps = state => {
         ings: state.burgerBuilder.ingredients,
         price: state.burgerBuilder.totalPrice,
         loading: state.order.loading,
-        token: state.auth.token
+        token: state.auth.token,
+        userId: state.auth.userId
 
     }
 };
