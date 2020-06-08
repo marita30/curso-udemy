@@ -73,9 +73,11 @@ export const ordersGetSuccess = (orderData) => {
     };
 };
 
-export const getOrders = (token) => {
+export const getOrders = (token, userId) => {
     return dispatch => {
-        axios.get('/orders.json?auth=' + token)
+        /* Para mandar a traer solo las ordenes que le corresponde a cada UserId y le decimos que queremos ordenarlo por el userId */
+        const queryParams = '?auth=' + token + '&orderBy=userId&equalTo=' + userId; 
+        axios.get('/orders.json' + queryParams)
             .then(res => {
                 const fetcheOrders = [];
                 /* me va a traer todas las ordenes que estan en el backend en firebase, key hace refencia a los id de las ordenes */
