@@ -76,7 +76,7 @@ export const ordersGetSuccess = (orderData) => {
 export const getOrders = (token, userId) => {
     return dispatch => {
         /* Para mandar a traer solo las ordenes que le corresponde a cada UserId y le decimos que queremos ordenarlo por el userId */
-        const queryParams = '?auth=' + token + '&orderBy=userId&equalTo=' + userId; 
+        const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"'; 
         axios.get('/orders.json' + queryParams)
             .then(res => {
                 const fetcheOrders = [];
