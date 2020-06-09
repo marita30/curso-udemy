@@ -15,10 +15,28 @@ configure({adapter: new Adapter()})
 
 
 describe('<NavigationItems />', () => {
+
+    let wrapper;
+    /* Esta es na funcion que e ejecutara automaticamente  */
+    beforeEach(() => {
+        wrapper = shallow (<NavigationItems />);
+    });
+
+
     /* it lo que hace es que describe o le permite escribir una prueba individul. */
     it('should render  two <NavigationItem /> elements if not authenticated', () => {
-        const wrapper = shallow (<NavigationItems />);
         /* Esto es para encontrar navigationItem, la longuitud que esperamos encontrar con el toHaveLength es 2  */
         expect(wrapper.find(NavigationItem)).toHaveLength(2);
     });
+
+
+    /* Queremos tener tres elemento de navegacion si estmos authenticados  */
+    it('should render  three <NavigationItem /> elements if authenticated', () => {
+        //wrapper = shallow(<NavigationItems isAuthenticated />);
+        wrapper.setProps({isAuthenticated: true});
+        /* Esto es para encontrar navigationItem, la longuitud que esperamos encontrar con el toHaveLength es 2  */
+        expect(wrapper.find(NavigationItem)).toHaveLength(3);
+    });
+
+    
 });
