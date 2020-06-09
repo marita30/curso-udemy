@@ -36,6 +36,7 @@ class App extends Component{
         <Switch>
             {/* Uthenticate */}
             <Route path="/logout" component={Logout} />
+            <Route path="/auth" component={Auth} />
             <Route path="/Checkout" component={Checkout} />
             <Route path="/orders" component={Orders} /> {/* el boton para que se direccione aqui esta en el archivo NavigationItems.js */}
             <Route path="/" exact component={BurgerBuilder} />
