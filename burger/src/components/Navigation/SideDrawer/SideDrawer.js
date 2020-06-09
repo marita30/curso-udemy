@@ -19,7 +19,7 @@ const sideDrawer = (props) => {
                 clicked={props.closed}
             /> {/* /* viene del archivo Backdrop.js y el show es de la condicion que si props.show es verdadero que se active una clase si no que retorne null es para el telon.*/}
             
-            <div className={attachedClasses.join(' ')}>  {/* /* closed viene del archivo Layout.js del metodo  sideDrawerClosedHandler. de igual forma props.open */}
+            <div className={attachedClasses.join(' ')} onClick={props.closed}>  {/* /* closed viene del archivo Layout.js del metodo  sideDrawerClosedHandler. de igual forma props.open */}
 
                 <div className={classes.Logo}>
 
