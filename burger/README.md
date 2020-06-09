@@ -19,8 +19,21 @@ axios.post('/orders.json', order).
 
 ## Terminal📦
 1. Instalamos react-router-dom para utilizar las rutas --> npm install --save react-router-dom.
-## Routes.
-1. app.js
-2. BurgerBuilder.js.
+2. Instalamos estos paquetes para la creacion de las pruebas --> npm install --save enzyme react-test-renderer enzyme-adapter-react-16 
+3. Instalamos redux.
+4. instalamos react dom.
 
-en el order.js esta la peticin donde mndo a traer la informacin al servidor.
+## Routes.
+1. /logout.
+2. /.
+3. /auth.
+4. /orders.
+
+## Ejemplo 🛠️.
+1.Pagina Principal. "/"
+![stack Overflow](https://github.com/marita30/Curso-Udemy/blob/master/burger/src/assets/images/burgerBuilder.png)
+
+
+## Autores ✒️
+* **Maria Jose Chavarria** - *Trabajo Inicial* - [marita30](https://github.com/marita30/Curso-Udemy/edit/master/burger)
+
