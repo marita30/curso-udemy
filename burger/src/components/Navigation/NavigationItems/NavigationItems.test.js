@@ -38,5 +38,12 @@ describe('<NavigationItems />', () => {
         expect(wrapper.find(NavigationItem)).toHaveLength(3);
     });
 
-    
+    /* Para verificar que cuando el usuario este authenticated se le muestre el logout */
+    it('should render  three <NavigationItem /> elements if authenticated', () => {
+         wrapper.setProps({isAuthenticated: true});
+        /* Esto es para encontrar el Logout, toEqual puedo verificar si esto dos igual verdadero  le ponemos true , encontrarlo si estamos authenticados  */
+        expect(wrapper.contains(<NavigationItem link="/logout">Logout</NavigationItem>)).toEqual(true);
+    });
+
+
 });
