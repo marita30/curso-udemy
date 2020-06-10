@@ -34,6 +34,8 @@ axios.post('/orders.json', order).
 ![stack Overflow](https://github.com/marita30/Curso-Udemy/blob/master/burger/src/assets/images/burgerBuilder.png)
 2. Pagina del Aut. "/auth"
 ![stack Overflow](https://github.com/marita30/Curso-Udemy/blob/master/burger/src/assets/images/burgerBuilderAuth.png)
+3. Pagina del Orders. "/orders"
+![stack Overflow](https://github.com/marita30/Curso-Udemy/blob/master/burger/src/assets/images/burgerBuilderOrders.png)
 
 ## DeploymentURL 📄.
 https://burger-1e5b1.web.app
