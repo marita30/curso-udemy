@@ -32,7 +32,11 @@ axios.post('/orders.json', order).
 ## Ejemplo 🛠️.
 1.Pagina Principal. "/"
 ![stack Overflow](https://github.com/marita30/Curso-Udemy/blob/master/burger/src/assets/images/burgerBuilder.png)
+2. Pagina del Aut. "/auth"
+![stack Overflow](https://github.com/marita30/Curso-Udemy/blob/master/burger/src/assets/images/burgerBuilderAuth.png)
 
+## DeploymentURL 📄.
+https://burger-1e5b1.web.app
 
 ## Autores ✒️
 * **Maria Jose Chavarria** - *Trabajo Inicial* - [marita30](https://github.com/marita30/Curso-Udemy/edit/master/burger)
