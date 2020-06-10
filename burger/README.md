@@ -36,6 +36,11 @@ axios.post('/orders.json', order).
 ![stack Overflow](https://github.com/marita30/Curso-Udemy/blob/master/burger/src/assets/images/burgerBuilderAuth.png)
 3. Pagina del Orders. "/orders"
 ![stack Overflow](https://github.com/marita30/Curso-Udemy/blob/master/burger/src/assets/images/burgerBuilderOrders.png)
+4. Pagina del Checkout. "/checkout"
+![stack Overflow](https://github.com/marita30/Curso-Udemy/blob/master/burger/src/assets/images/burgerBuilderCheckout.png)
+5. Pagina del Checkout_ContactData. "/checkout/contactData"
+![stack Overflow](https://github.com/marita30/Curso-Udemy/blob/master/burger/src/assets/images/burgerBuilderCheckoutContactData.png)
+
 
 ## DeploymentURL 📄.
 https://burger-1e5b1.web.app
