@@ -9,6 +9,7 @@
 /redux--01-start/node_modules
 /routing--react-suspense-start/node_modules
 /redux--assignment-2-solution/node_modules
+/hooks-01-starting-project/node_modules
 # testing
 /coverage
 
