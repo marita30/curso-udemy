@@ -19,6 +19,13 @@ const Ingredients = () =>  {
         ]);
   };
 
+  /* Remove Ingredients */
+
+  const removeIngredientsHandler = ingredientId => {
+                                                                                    /*  Si no es igual ingrediente.id a ingredientId */
+    setUserIngredients(prevIngredients => prevIngredients.filter((ingredient) => ingredient.id !== ingredientId ));
+  };
+
 
 
   return (
@@ -27,7 +34,7 @@ const Ingredients = () =>  {
 
       <section>
         <Search />
-          <IngredientList ingredients = {userIngredients} onRemoveItem = { () => {}}/>
+          <IngredientList ingredients = {userIngredients} onRemoveItem = { removeIngredientsHandler}/>
       </section>
     </div>
   );
