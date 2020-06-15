@@ -4,8 +4,9 @@ import Card from '../UI/Card';
 import './IngredientForm.css';
 
 const IngredientForm = React.memo(props => {
-  /* Esto ahora lo pasa como un arreglo */
- const inputState = useState({title: '', amount: ''});
+                      /* Esto ahora lo pasa como un arreglo */ 
+  /* [] esta es una sisntaxis de javascript que permite extraer elementos del arreglo {title, amount} inputState sera para obtener los datos y setINputState para actualizar los datos.*/                    
+ const [ inputState, setInputState ] = useState({title: '', amount: ''});
 
 
   const submitHandler = event => {
@@ -23,12 +24,12 @@ const IngredientForm = React.memo(props => {
             <input 
               type="text" 
               id="title" 
-              value={inputState[0].title} 
+              value={inputState.title} 
               /* ACtualiza title con los valores  target.value que son los que son ingresados por el usuario. () => le decimos que ese seria el cuerpo de la funcion y este es en realidad el valor de retorno.
               prevInputState es el valor anterior  */
               onChange={event => {
                 const newTitle = event.target.value;                
-                  inputState[1](prevInputState => ({
+                  setInputState(prevInputState => ({
                   title: newTitle, 
                   amount: prevInputState.amount
                   }));
@@ -42,11 +43,11 @@ const IngredientForm = React.memo(props => {
             <input 
               type="number" 
               id="amount" 
-              value={inputState[0].amount}
+              value={inputState.amount}
               /* ACtualiza amount con los valores target.value que son los que son ingresados por el usuario. () => le decimos que ese seria el cuerpo de la funcion y este es en realidad el valor de retorno. */
               onChange={event => {
                 const newAmount = event.target.value;
-                inputState[1](prevInputState => ({
+                setInputState(prevInputState => ({
                 amount: newAmount, 
                 title: prevInputState.title
               }));
