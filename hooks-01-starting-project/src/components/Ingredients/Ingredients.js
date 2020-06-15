@@ -13,11 +13,25 @@ const Ingredients = () =>  {
   /* Agregar ingredients */
 
   const addIngredientHandler = ingredient => {
-                                          /* es un operadr de propagacion que toma todos los elementos de nuestra matriz anterior y lo agrega como elementos a esta nueva matriz */
-    setUserIngredients(prevIngredients => [...prevIngredients,
-         {id: Math.random().toString(), ...ingredient}
-        ]);
+    
+    /* HACER LA PETICION CON RECAT HOOK A FIREBASE */
+    fetch('https://react-hooks-562ed.firebaseio.com/ingredients.json', {
+      method: 'POST',
+      /* Tomara una cadena o matriz y lo convertira a json */
+      body: JSON.stringify(ingredient),
+      headers:  { 'Content-Type': 'application/json' }
+    })
+    .then(response => {
+      return response.json();
+    })
+    .then(responseData => {
+                               /* es un operadr de propagacion que toma todos los elementos de nuestra matriz anterior y lo agrega como elementos a esta nueva matriz */
+      setUserIngredients(prevIngredients => [...prevIngredients,
+        {id: responseData.name, ...ingredient}
+      ]);
+    });
   };
+    
 
   /* Remove Ingredients */
 
