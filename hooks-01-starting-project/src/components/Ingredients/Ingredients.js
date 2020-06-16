@@ -32,6 +32,12 @@ const Ingredients = () =>  {
       console.log('RENDERING INGREDIENTS', userIngredients);
     }, [userIngredients]);
 
+
+    /* Para filter -- search */
+    const filteredIngredientsHandler = filteredIngredients => {
+      setUserIngredients(filteredIngredients)
+    }
+
     
  
 
@@ -72,7 +78,7 @@ const Ingredients = () =>  {
       <IngredientForm onAddIngredient = {addIngredientHandler} />
 
       <section>
-        <Search />
+        <Search onLoadIngredients={filteredIngredientsHandler}/> {/* onLoadINgredients viene del archivo search.js */}
           <IngredientList ingredients = {userIngredients} onRemoveItem = { removeIngredientsHandler}/>
       </section>
     </div>
