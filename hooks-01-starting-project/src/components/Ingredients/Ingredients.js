@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import IngredientForm from './IngredientForm';
 import IngredientList from './IngredientList';
@@ -9,6 +9,27 @@ const Ingredients = () =>  {
   /* ingredients es para obtener los userIngredientes y setUserIngredients es para actualizar la matriz que esta en useState cuando el usuario ingrese nuevos ingredientes.s */
   const [userIngredients, setUserIngredients] = useState([]); 
 
+  /* Para cuando uno le de refresh los ingredientes no se borren */
+    useEffect(() => { 
+
+      fetch('https://react-hooks-562ed.firebaseio.com/ingredients.json').then(
+          response => response.json()
+      ).then(responseData => {
+          const loadedIngredients = [];
+          for (const key in responseData) {
+            loadedIngredients.push({
+              id: key,
+              title: responseData[key].title,
+              amount: responseData[key].amount
+            });
+          }
+           setUserIngredients(loadedIngredients); 
+      })
+      
+    }, []);
+
+    
+ 
 
   /* Agregar ingredients */
 
