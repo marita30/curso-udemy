@@ -89,14 +89,14 @@ const Ingredients = () =>  {
 
     }).catch(error => {
       setIsError('Something went wrong!');
+      setIsLoading(false);
     });
     
   };
 
   /* Error */
   const clearError = () => {
-    setIsError(null);
-    setIsLoading(false);
+    setIsError(null); 
   }
 
 
