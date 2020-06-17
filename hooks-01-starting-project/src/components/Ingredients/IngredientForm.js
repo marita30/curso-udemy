@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import Card from '../UI/Card';
 import './IngredientForm.css';
 
+import LoadingIndicator from '../UI/LoadingIndicator';
+
 const IngredientForm = React.memo(props => {
                       /* Esto ahora lo pasa como un arreglo */ 
   /* [] esta es una sisntaxis de javascript que permite extraer elementos del arreglo useState enteredTitle sera para obtener el title y setEnteredTitle para actualizar el title.*/                    
@@ -49,6 +51,8 @@ const IngredientForm = React.memo(props => {
           
           <div className="ingredient-form__actions">
             <button type="submit">Add Ingredient</button>
+            {/* SI LA CARGA DE LOS ACCESORIOS ES TRUE QUIERO MOSTRAR EL lOADINGINDICATOR DE LO CONTRARIO NULL */}
+            {props.loading && <LoadingIndicator /> } {/* Viene del archivo Ingredients.js */}
           </div>
         </form>
       </Card>
