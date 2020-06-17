@@ -67,8 +67,15 @@ const Ingredients = () =>  {
   /* Remove Ingredients */
 
   const removeIngredientsHandler = ingredientId => {
-                                                                                    /*  Si no es igual ingrediente.id a ingredientId */
-    setUserIngredients(prevIngredients => prevIngredients.filter((ingredient) => ingredient.id !== ingredientId ));
+    /* HACER LA PETICION CON REACT HOOK A FIREBASE */
+    fetch(`https://react-hooks-562ed.firebaseio.com/ingredients/${ingredientId}.json`, {
+      method: 'DELETE'
+    }).then(response => {
+                                                                                      /*  Si no es igual ingrediente.id a ingredientId */
+      setUserIngredients(prevIngredients => prevIngredients.filter((ingredient) => ingredient.id !== ingredientId ));
+
+    });
+    
   };
 
 
