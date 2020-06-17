@@ -5,10 +5,13 @@ import IngredientList from './IngredientList';
 
 import Search from './Search';
 
+import ErrorModal from '../UI/ErrorModal';
+
 const Ingredients = () =>  {
   /* ingredients es para obtener los userIngredientes y setUserIngredients es para actualizar la matriz que esta en useState cuando el usuario ingrese nuevos ingredientes.s */
   const [userIngredients, setUserIngredients] = useState([]); 
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setIsError] = useState();
 
   /* Para cuando uno le de refresh los ingredientes no se borren */
     useEffect(() => { 
@@ -84,14 +87,24 @@ const Ingredients = () =>  {
                                                                                       /*  Si no es igual ingrediente.id a ingredientId */
       setUserIngredients(prevIngredients => prevIngredients.filter((ingredient) => ingredient.id !== ingredientId ));
 
+    }).catch(error => {
+      setIsError('Something went wrong!');
     });
     
   };
+
+  /* Error */
+  const clearError = () => {
+    setIsError(null);
+    setIsLoading(false);
+  }
 
 
 
   return (
     <div className="App">
+      {/* Verificamos si el error es verdadero */}
+      {error && <ErrorModal onClose={clearError}>{error}</ErrorModal>}
       <IngredientForm 
         onAddIngredient = {addIngredientHandler}  
         loading={isLoading}
