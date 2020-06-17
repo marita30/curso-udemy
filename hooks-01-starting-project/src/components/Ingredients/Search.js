@@ -14,7 +14,7 @@ const Search = React.memo(props => {
   useEffect(() => {
 
     /* Si el usuario pause la escritura durante 500 milisegundos y solo si esto sucedio quiero enviar la siguien solicitud. */
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       if (enteredFilter === inputRef.current.value) {
           /* Si la longitud del filtro ingresada es igual a cero entonces mi periodo de consulta no sera nada. `?` interpolacion de cadenas para inyectar valores dinamicos. */
         const query = 
@@ -39,6 +39,10 @@ const Search = React.memo(props => {
       }
      
     }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };  
 
   }, [enteredFilter, onLoadIngredients, inputRef]);
 
