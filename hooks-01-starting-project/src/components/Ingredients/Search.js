@@ -10,7 +10,7 @@ const Search = React.memo(props => {
   const [enteredFilter, setEnteredFilter] = useState('');
   const inputRef = useRef('');
 
-  /* SE EJECUTARA CUANDO EL FILTRO INGRESADO CAMBIE */
+  /* SE EJECUTARA CUANDO EL FILTRO INGRESADO CAMBIE  y para refrescar la pagina y ue lo tenga cargado los ingredientes*/
   useEffect(() => {
 
     /* Si el usuario pause la escritura durante 500 milisegundos y solo si esto sucedio quiero enviar la siguien solicitud. */
