@@ -1,4 +1,4 @@
-import React, { useReducer, useState, useEffect, useCallback } from 'react';
+import React, { useReducer, useEffect, useCallback } from 'react';
 
 import IngredientForm from './IngredientForm';
 import IngredientList from './IngredientList';
@@ -9,8 +9,8 @@ import ErrorModal from '../UI/ErrorModal';
 
 /* Usando el useReducer */
 const ingredientReducer = (currentIngredients, action) => {
-  switch (action.type){
 
+  switch (action.type){
     case 'SET':
       return action.ingredients;
     case 'ADD':
@@ -22,15 +22,33 @@ const ingredientReducer = (currentIngredients, action) => {
       throw new Error('SHOULD NO GET THERE!');
   }
 
-}
+};
+
+const httpReducer = (curHttpState, action) => {
+
+  switch(action.type) {
+    case 'SEND':
+      return { loading: true, error: null}; 
+    case 'RESPONSE':
+      return { ...curHttpState, loading: false };
+    case 'ERROR':
+      return { loading: false, error: action.errorMessage };
+    case 'CLEAR':
+      return { ...curHttpState, error: null };
+    default:
+      throw new Error('SHOULD NOT BE REACHED!');
+  }
+
+};
 
 const Ingredients = () =>  {
 
   const [userIngredients, dispatch] = useReducer(ingredientReducer, []);
+  const [httpState, dispatchHttp] = useReducer(httpReducer, { loading: false, error: null });
   /* ingredients es para obtener los userIngredientes y setUserIngredients es para actualizar la matriz que esta en useState cuando el usuario ingrese nuevos ingredientes.s */
   /* const [userIngredients, setUserIngredients] = useState([]); */ 
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setIsError] = useState();
+ /*  const [isLoading, setIsLoading] = useState(false);
+  const [error, setIsError] = useState(); */
 
     useEffect(() => {
       console.log('RENDERING INGREDIENTS', userIngredients);
@@ -50,8 +68,7 @@ const Ingredients = () =>  {
 
   const addIngredientHandler = ingredient => {
 
-    setIsLoading(true);
-    
+    dispatchHttp({ type: 'SEND'});
     /* HACER LA PETICION CON RECAT HOOK A FIREBASE */
     fetch('https://react-hooks-562ed.firebaseio.com/ingredients.json', {
       method: 'POST',
@@ -62,7 +79,7 @@ const Ingredients = () =>  {
 
     .then(response => {
 
-      setIsLoading(false);
+      dispatchHttp({ type: 'RESPONSE'});
       return response.json();
 
     })
@@ -73,8 +90,10 @@ const Ingredients = () =>  {
         {id: responseData.name, ...ingredient}
       ]); */
       dispatch({ 
+
         type: 'ADD', 
         ingredient: { id: responseData.name, ...ingredient } 
+
       });
     });
   };
@@ -83,37 +102,36 @@ const Ingredients = () =>  {
   /* Remove Ingredients */
 
   const removeIngredientsHandler = ingredientId => {
-    setIsLoading(true);
+    dispatchHttp({ type: 'SEND'});
     /* HACER LA PETICION CON REACT HOOK A FIREBASE */
     fetch(`https://react-hooks-562ed.firebaseio.com/ingredients/${ingredientId}.json`, {
       method: 'DELETE'
     }).then(response => {
-      setIsLoading(false);
+      dispatchHttp({ type: 'RESPONSE'});
                                                                                       /*  Si no es igual ingrediente.id a ingredientId */
       /* setUserIngredients(prevIngredients => prevIngredients.filter((ingredient) => ingredient.id !== ingredientId )); */
       dispatch({ type: 'DELETE', id: ingredientId });
 
     }).catch(error => {
-      setIsError('Something went wrong!');
-      setIsLoading(false);
+      dispatchHttp({ type: 'ERROR', errorMessage: 'Something went wrong!'});
     });
     
   };
 
   /* Error */
   const clearError = () => {
-    setIsError(null); 
-  }
+    dispatchHttp({ type: 'CLEAR' });
+  };
 
 
 
   return (
     <div className="App">
       {/* Verificamos si el error es verdadero */}
-      {error && <ErrorModal onClose={clearError}>{error}</ErrorModal>}
+      {httpState.error && <ErrorModal onClose={clearError}>{httpState.error}</ErrorModal>}
       <IngredientForm 
         onAddIngredient = {addIngredientHandler}  
-        loading={isLoading}
+        loading={httpState.loading}
       />
 
       <section>
